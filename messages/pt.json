@@ -1,0 +1,18 @@
+{
+  "Metadata": {
+    "title": "Portfólio",
+    "description": "Portfólio pessoal"
+  },
+  "LocaleSwitcher": {
+    "label": "Idioma",
+    "en": "Inglês",
+    "pt": "Português",
+    "es": "Espanhol"
+  },
+  "HomePage": {
+    "title": "Para começar, edite o arquivo page.tsx.",
+    "description": "Procurando um ponto de partida ou mais instruções? Acesse <templates>Templates</templates> ou o centro de <learn>Aprendizado</learn>.",
+    "deploy": "Fazer deploy",
+    "docs": "Documentação"
+  }
+}
