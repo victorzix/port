@@ -8,11 +8,11 @@ export default function Home() {
   const t = useTranslations("HomePage");
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-1 flex-col items-center justify-center bg-black font-sans">
       <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between gap-10 px-6 py-16 sm:items-start sm:gap-16 sm:px-16 sm:py-32">
         <div className="flex w-full items-center justify-between">
           <Image
-            className="dark:invert"
+            className="invert"
             src="/next.svg"
             alt="Next.js logo"
             width={100}
@@ -22,15 +22,15 @@ export default function Home() {
           <LocaleSwitcher />
         </div>
         <div className="flex flex-col items-center gap-4 text-center sm:items-start sm:gap-6 sm:text-left">
-          <h1 className="max-w-xs text-2xl font-semibold leading-9 tracking-tight text-black sm:text-3xl sm:leading-10 dark:text-zinc-50">
+          <h1 className="max-w-xs text-2xl font-semibold leading-9 tracking-tight text-zinc-50 sm:text-3xl sm:leading-10">
             {t("title")}
           </h1>
-          <p className="max-w-md text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8 dark:text-zinc-400">
+          <p className="max-w-md text-base leading-7 text-zinc-400 sm:text-lg sm:leading-8">
             {t.rich("description", {
               templates: (chunks) => (
                 <a
                   href="https://vercel.com/templates?framework=next.js"
-                  className="font-medium text-zinc-950 dark:text-zinc-50"
+                  className="font-medium text-zinc-50"
                 >
                   {chunks}
                 </a>
@@ -38,7 +38,7 @@ export default function Home() {
               learn: (chunks) => (
                 <a
                   href="https://nextjs.org/learn"
-                  className="font-medium text-zinc-950 dark:text-zinc-50"
+                  className="font-medium text-zinc-50"
                 >
                   {chunks}
                 </a>
