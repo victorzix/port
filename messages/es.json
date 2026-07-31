@@ -4,15 +4,83 @@
     "description": "Portafolio personal"
   },
   "LocaleSwitcher": {
-    "label": "Idioma",
-    "en": "Inglés",
-    "pt": "Portugués",
-    "es": "Español"
+    "label": "Idioma"
   },
-  "HomePage": {
-    "title": "Para empezar, edita el archivo page.tsx.",
-    "description": "¿Buscas un punto de partida o más instrucciones? Visita <templates>Plantillas</templates> o el centro de <learn>Aprendizaje</learn>.",
-    "deploy": "Desplegar ahora",
-    "docs": "Documentación"
+  "Nav": {
+    "items": ["Sobre mí", "Proyectos", "Experiencia", "Stack", "Contacto"],
+    "status": "Abierto a propuestas",
+    "location": "Brasil · GMT-3",
+    "cta": "Hablemos",
+    "themeToDark": "Activar modo oscuro",
+    "themeToLight": "Activar modo claro"
+  },
+  "Hero": {
+    "kicker": "Desarrollador Fullstack Semi Senior",
+    "title": "Construyo sistemas web desde la base de datos hasta la interfaz.",
+    "lead": "Especializado en TypeScript de punta a punta. Llevo productos de cero al deploy — APIs en Node.js y NestJS, interfaces en React y Next.js, con foco en arquitectura limpia y entrega medible.",
+    "ctaWork": "Ver proyectos",
+    "stackLabel": "Stack principal",
+    "facts": [
+      {
+        "label": "Actualmente",
+        "value": "Greenfive · Ancar Ivanhoe",
+        "note": "Tres sistemas construidos desde cero y en producción: beneficios, cotizaciones con IA y provisión contable."
+      },
+      {
+        "label": "Impacto",
+        "value": "−106 h/mes",
+        "note": "Horas de trabajo manual eliminadas cada mes sumando los tres sistemas — cifras validadas por las áreas de negocio."
+      },
+      {
+        "label": "Método",
+        "value": "Spec y tests antes del código",
+        "note": "SDD y TDD como barandilla del desarrollo asistido por IA — especificación escrita y tests definidos antes de cualquier línea."
+      }
+    ]
+  },
+  "Work": {
+    "label": "Proyectos",
+    "title": "Tres sistemas en producción, todos medidos en horas devueltas.",
+    "lead": "Entregados bajo contrato por Greenfive, asignado a Ancar Ivanhoe. Alcance, arquitectura y entrega de punta a punta en cada uno.",
+    "impactLabel": "Impacto medido",
+    "stackLabel": "Stack",
+    "projects": [
+      {
+        "name": "Gestión de beneficios",
+        "context": "Ancar Ivanhoe · vía Greenfive",
+        "metric": "−70 h/mes",
+        "desc": "Plataforma construida desde cero para el pedido, la aprobación y el pago de beneficios en las 94 empresas del grupo. Sustituyó planillas y revisión manual por un flujo único, auditable e integrado al área financiera.",
+        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"]
+      },
+      {
+        "name": "Agente de OCR y cotizaciones",
+        "context": "Ancar Ivanhoe · vía Greenfive",
+        "metric": "−30 h/mes",
+        "desc": "Agente que lee cotizaciones de proveedores en PDF e imagen, extrae y normaliza los datos y devuelve las opciones de compra ya comparadas para los centros comerciales del grupo. Ahorro medido por la propia área de negocio.",
+        "stack": ["Python", "LangChain", "OCR", "LLM"]
+      },
+      {
+        "name": "Provisión de contingencia",
+        "context": "Ancar Ivanhoe · vía Greenfive",
+        "metric": "−6 h/mes",
+        "desc": "Sistema contable que calcula la provisión de procesos judiciales por categoría, coparticipación y empresas afectadas — incluido el prorrateo con los locatarios — y hace los asientos directo en JD Edwards.",
+        "stack": ["TypeScript", "Node.js", "PostgreSQL", "JD Edwards"]
+      }
+    ]
+  },
+  "ProjectsPage": {
+    "title": "Proyectos",
+    "description": "Una colección de cosas que he construido.",
+    "empty": "Todavía no hay proyectos — vuelve pronto."
+  },
+  "ProjectDetail": {
+    "backToProjects": "Volver a proyectos",
+    "changelogHeading": "Changelog",
+    "changelogEmpty": "Todavía no hay actualizaciones.",
+    "repoLink": "Ver código fuente",
+    "liveLink": "Ver en vivo"
+  },
+  "ChangelogEntry": {
+    "publishedOn": "Publicado el {date}"
   }
 }

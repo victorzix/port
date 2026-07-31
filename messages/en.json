@@ -4,15 +4,83 @@
     "description": "Personal portfolio"
   },
   "LocaleSwitcher": {
-    "label": "Language",
-    "en": "English",
-    "pt": "Portuguese",
-    "es": "Spanish"
+    "label": "Language"
   },
-  "HomePage": {
-    "title": "To get started, edit the page.tsx file.",
-    "description": "Looking for a starting point or more instructions? Head over to <templates>Templates</templates> or the <learn>Learning</learn> center.",
-    "deploy": "Deploy Now",
-    "docs": "Documentation"
+  "Nav": {
+    "items": ["About", "Work", "Experience", "Stack", "Contact"],
+    "status": "Open to work",
+    "location": "Brazil · GMT-3",
+    "cta": "Let's talk",
+    "themeToDark": "Switch to dark mode",
+    "themeToLight": "Switch to light mode"
+  },
+  "Hero": {
+    "kicker": "Mid-level Full Stack Developer",
+    "title": "I build web systems from the database to the interface.",
+    "lead": "End-to-end TypeScript specialist. I take products from zero to deploy — APIs in Node.js and NestJS, interfaces in React and Next.js, with a focus on clean architecture and measurable delivery.",
+    "ctaWork": "See my work",
+    "stackLabel": "Core stack",
+    "facts": [
+      {
+        "label": "Currently",
+        "value": "Greenfive · Ancar Ivanhoe",
+        "note": "Three systems built from scratch and shipped to production: benefits, AI-assisted quotes and accounting provisions."
+      },
+      {
+        "label": "Impact",
+        "value": "−106 h/month",
+        "note": "Hours of manual work removed every month across the three systems — figures validated by the business teams."
+      },
+      {
+        "label": "Method",
+        "value": "Spec and tests before code",
+        "note": "SDD and TDD as guardrails for AI-assisted development — written spec and defined tests before a single line."
+      }
+    ]
+  },
+  "Work": {
+    "label": "Work",
+    "title": "Three systems in production, each measured in hours given back.",
+    "lead": "Delivered under contract through Greenfive, placed at Ancar Ivanhoe. Scope, architecture and delivery end to end on every one.",
+    "impactLabel": "Measured impact",
+    "stackLabel": "Stack",
+    "projects": [
+      {
+        "name": "Benefits management",
+        "context": "Ancar Ivanhoe · via Greenfive",
+        "metric": "−70 h/month",
+        "desc": "Platform built from scratch for requesting, approving and paying benefits across the group's 94 companies. Replaced spreadsheets and manual checking with a single auditable flow wired into finance.",
+        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"]
+      },
+      {
+        "name": "OCR and quoting agent",
+        "context": "Ancar Ivanhoe · via Greenfive",
+        "metric": "−30 h/month",
+        "desc": "Agent that reads supplier quotes from PDFs and images, extracts and normalises the data, and returns pre-compared purchasing options for the group's malls. Savings measured by the business team itself.",
+        "stack": ["Python", "LangChain", "OCR", "LLM"]
+      },
+      {
+        "name": "Contingency provisioning",
+        "context": "Ancar Ivanhoe · via Greenfive",
+        "metric": "−6 h/month",
+        "desc": "Accounting system that calculates legal-case provisions by category, co-participation and affected companies — including the split with tenants — and posts the entries straight into JD Edwards.",
+        "stack": ["TypeScript", "Node.js", "PostgreSQL", "JD Edwards"]
+      }
+    ]
+  },
+  "ProjectsPage": {
+    "title": "Projects",
+    "description": "A collection of things I've built.",
+    "empty": "No projects yet — check back soon."
+  },
+  "ProjectDetail": {
+    "backToProjects": "Back to projects",
+    "changelogHeading": "Changelog",
+    "changelogEmpty": "No updates yet.",
+    "repoLink": "View source",
+    "liveLink": "View live"
+  },
+  "ChangelogEntry": {
+    "publishedOn": "Published {date}"
   }
 }
