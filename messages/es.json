@@ -8,8 +8,6 @@
   },
   "Nav": {
     "items": ["Sobre mí", "Proyectos", "Experiencia", "Stack", "Contacto"],
-    "status": "Abierto a propuestas",
-    "location": "Brasil · GMT-3",
     "cta": "Hablemos",
     "themeToDark": "Activar modo oscuro",
     "themeToLight": "Activar modo claro"

@@ -8,7 +8,6 @@ import { BrandMark } from "@/components/site-header/brand-mark";
 import { DesktopNav } from "@/components/site-header/desktop-nav";
 import { MobileMenuButton } from "@/components/site-header/mobile-menu-button";
 import { MobileSheet } from "@/components/site-header/mobile-sheet";
-import { StatusRail } from "@/components/site-header/status-rail";
 import { ThemeToggleButton } from "@/components/site-header/theme-toggle-button";
 import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import { cn } from "@/lib/utils";
@@ -21,8 +20,6 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/86 backdrop-blur-md backdrop-saturate-150">
-      <StatusRail condensed={condensed} />
-
       <div
         className={cn(
           "mx-auto flex max-w-[1320px] items-center gap-3 px-4 transition-[height] duration-[380ms] ease-out sm:px-16",

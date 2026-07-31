@@ -8,8 +8,6 @@
   },
   "Nav": {
     "items": ["About", "Work", "Experience", "Stack", "Contact"],
-    "status": "Open to work",
-    "location": "Brazil · GMT-3",
     "cta": "Let's talk",
     "themeToDark": "Switch to dark mode",
     "themeToLight": "Switch to light mode"
