@@ -1,17 +1,6 @@
 import { useTranslations } from "next-intl";
 
 import { HeroFacts } from "@/components/hero/hero-facts";
-import { TechChipList } from "@/components/shared/tech-chip-list";
-
-const CORE_STACK = [
-  "TypeScript",
-  "Node.js",
-  "NestJS",
-  "React",
-  "Next.js",
-  "PostgreSQL",
-  "Docker",
-];
 
 export function HeroSection() {
   const t = useTranslations("Hero");
@@ -34,7 +23,7 @@ export function HeroSection() {
 
       <div className="mt-7 flex flex-wrap items-center gap-2.5 sm:mt-10">
         <a
-          href="#work"
+          href="#experience"
           className="inline-flex min-h-[52px] items-center gap-3 rounded-full bg-brand px-5.5 text-[15px] font-semibold tracking-[-0.015em] text-white transition-[filter,transform] hover:brightness-110 active:translate-y-0"
         >
           {t("ctaWork")}
@@ -59,13 +48,6 @@ export function HeroSection() {
       </div>
 
       <HeroFacts facts={facts} />
-
-      <div className="mt-10 flex flex-col gap-3.5 sm:mt-16">
-        <span className="font-mono text-[9.5px] tracking-[0.14em] text-muted-foreground uppercase">
-          {t("stackLabel")}
-        </span>
-        <TechChipList items={CORE_STACK} />
-      </div>
     </div>
   );
 }

@@ -7,7 +7,7 @@
     "label": "Idioma"
   },
   "Nav": {
-    "items": ["Sobre mí", "Proyectos", "Experiencia", "Stack", "Contacto"],
+    "items": ["Sobre mí", "Experiencia", "Contacto"],
     "cta": "Hablemos",
     "themeToDark": "Activar modo oscuro",
     "themeToLight": "Activar modo claro"
@@ -16,8 +16,7 @@
     "kicker": "Desarrollador Fullstack Semi Senior",
     "title": "Construyo sistemas web desde la base de datos hasta la interfaz.",
     "lead": "Especializado en TypeScript de punta a punta. Llevo productos de cero al deploy — APIs en Node.js y NestJS, interfaces en React y Next.js, con foco en arquitectura limpia y entrega medible.",
-    "ctaWork": "Ver proyectos",
-    "stackLabel": "Stack principal",
+    "ctaWork": "Ver experiencia",
     "facts": [
       {
         "label": "Actualmente",
@@ -36,33 +35,86 @@
       }
     ]
   },
-  "Work": {
-    "label": "Proyectos",
-    "title": "Tres sistemas en producción, todos medidos en horas devueltas.",
-    "lead": "Entregados bajo contrato por Greenfive, asignado a Ancar Ivanhoe. Alcance, arquitectura y entrega de punta a punta en cada uno.",
-    "impactLabel": "Impacto medido",
-    "stackLabel": "Stack",
-    "projects": [
+  "Experience": {
+    "label": "Experiencia",
+    "title": "Cuatro años entre infraestructura y desarrollo.",
+    "lead": "Empecé en soporte y redes, lo que me dio una lectura de infraestructura que hoy uso en decisiones de arquitectura y deploy.",
+    "priorLabel": "Antes de eso · TI e infraestructura",
+    "roles": [
       {
-        "name": "Gestión de beneficios",
-        "context": "Ancar Ivanhoe · vía Greenfive",
-        "metric": "−70 h/mes",
-        "desc": "Plataforma construida desde cero para el pedido, la aprobación y el pago de beneficios en las 94 empresas del grupo. Sustituyó planillas y revisión manual por un flujo único, auditable e integrado al área financiera.",
-        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"]
+        "company": "Greenfive Tecnologia",
+        "role": "Desarrollador Fullstack Semi Senior",
+        "period": "abr 2026 — actual",
+        "length": "4 meses",
+        "current": true,
+        "desc": "Asignado a Ancar Ivanhoe. Dirijo decisiones de arquitectura y revisiones de código del equipo, con especificación y tests escritos antes del código (SDD y TDD) en flujo asistido por IA.",
+        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker", "Python", "LangChain"],
+        "deliverables": [
+          {
+            "name": "Gestión de beneficios (VR/VA)",
+            "metric": "−70 h/mes",
+            "note": "Pedido, aprobación y pago en las 94 empresas del grupo, integrados al área financiera."
+          },
+          {
+            "name": "Agente de OCR y cotizaciones",
+            "metric": "−30 h/mes",
+            "note": "Lee cotizaciones en PDF e imagen y devuelve opciones de compra ya comparadas."
+          },
+          {
+            "name": "Provisión de contingencia",
+            "metric": "−6 h/mes",
+            "note": "Provisión judicial por categoría y coparticipación, con asientos directo en JD Edwards."
+          }
+        ],
+        "metric": "−106 h",
+        "metricNote": "de trabajo manual/mes"
       },
       {
-        "name": "Agente de OCR y cotizaciones",
-        "context": "Ancar Ivanhoe · vía Greenfive",
-        "metric": "−30 h/mes",
-        "desc": "Agente que lee cotizaciones de proveedores en PDF e imagen, extrae y normaliza los datos y devuelve las opciones de compra ya comparadas para los centros comerciales del grupo. Ahorro medido por la propia área de negocio.",
-        "stack": ["Python", "LangChain", "OCR", "LLM"]
+        "company": "Proscale",
+        "role": "Desarrollador Fullstack Junior",
+        "period": "jul 2025 — mar 2026",
+        "length": "9 meses",
+        "tag": "en paralelo",
+        "desc": "Desarrollo y mantenimiento del sistema interno en React y Express, con estado global en Redux y modelado de datos en MongoDB.",
+        "stack": ["React", "Express", "Redux", "MongoDB"],
+        "metric": "",
+        "metricNote": ""
       },
       {
-        "name": "Provisión de contingencia",
-        "context": "Ancar Ivanhoe · vía Greenfive",
-        "metric": "−6 h/mes",
-        "desc": "Sistema contable que calcula la provisión de procesos judiciales por categoría, coparticipación y empresas afectadas — incluido el prorrateo con los locatarios — y hace los asientos directo en JD Edwards.",
-        "stack": ["TypeScript", "Node.js", "PostgreSQL", "JD Edwards"]
+        "company": "Centro Clínico Vida e Saúde",
+        "role": "Desarrollador Fullstack",
+        "period": "may 2024 — may 2025",
+        "length": "1 año 1 mes",
+        "tag": "en paralelo",
+        "desc": "Llevé solo el ciclo completo: la app oficial en Flutter y un sistema de convenios con pagos, boletos y suscripciones recurrentes. Backend en NestJS, front en React, PostgreSQL con caché en Redis. La telemedicina triplicó el alcance de pacientes, creció la adhesión a los convenios y el cobro, antes manual, pasó a salir automatizado.",
+        "stack": ["NestJS", "React", "Flutter", "PostgreSQL", "Redis", "Docker", "Jest"],
+        "metric": "3×",
+        "metricNote": "en el alcance de pacientes"
+      },
+      {
+        "company": "MIP",
+        "role": "Desarrollador Backend",
+        "period": "feb 2024 — sep 2024",
+        "length": "8 meses",
+        "tag": "en paralelo",
+        "desc": "Lideré el equipo de backend construyendo servicios en NestJS con WebSockets y Prisma, en entorno ágil.",
+        "stack": ["NestJS", "TypeScript", "WebSockets", "Prisma"],
+        "metric": "",
+        "metricNote": ""
+      }
+    ],
+    "prior": [
+      {
+        "company": "Terra",
+        "role": "Asistente de TI · NOC N2/N3",
+        "period": "feb 2024 — mar 2026",
+        "desc": "Monitoreo, diagnóstico avanzado y troubleshooting de redes e infraestructura."
+      },
+      {
+        "company": "Playvender do Brasil",
+        "role": "Asistente de TI",
+        "period": "may 2023 — ene 2024",
+        "desc": "Servidores, redes y administración de bases Oracle."
       }
     ]
   },

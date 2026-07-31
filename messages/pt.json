@@ -7,7 +7,7 @@
     "label": "Idioma"
   },
   "Nav": {
-    "items": ["Sobre", "Projetos", "Experiência", "Stack", "Contato"],
+    "items": ["Sobre", "Experiência", "Contato"],
     "cta": "Vamos conversar",
     "themeToDark": "Ativar modo escuro",
     "themeToLight": "Ativar modo claro"
@@ -16,8 +16,7 @@
     "kicker": "Desenvolvedor Fullstack Pleno",
     "title": "Construo sistemas web do banco de dados à interface.",
     "lead": "Especializado em TypeScript ponta a ponta. Levo produtos do zero ao deploy — APIs em Node.js e NestJS, interfaces em React e Next.js, com foco em arquitetura limpa e entrega mensurável.",
-    "ctaWork": "Ver projetos",
-    "stackLabel": "Stack principal",
+    "ctaWork": "Ver experiência",
     "facts": [
       {
         "label": "Atual",
@@ -36,33 +35,86 @@
       }
     ]
   },
-  "Work": {
-    "label": "Projetos",
-    "title": "Três sistemas em produção, todos medidos em horas devolvidas.",
-    "lead": "Entregues sob contrato pela Greenfive, alocado na Ancar Ivanhoe. Escopo, arquitetura e entrega ponta a ponta em cada um.",
-    "impactLabel": "Impacto medido",
-    "stackLabel": "Stack",
-    "projects": [
+  "Experience": {
+    "label": "Experiência",
+    "title": "Quatro anos entre infraestrutura e desenvolvimento.",
+    "lead": "Comecei em suporte e redes, o que me deu leitura de infraestrutura que hoje uso em decisões de arquitetura e deploy.",
+    "priorLabel": "Antes disso · TI e infraestrutura",
+    "roles": [
       {
-        "name": "Gestão de benefícios",
-        "context": "Ancar Ivanhoe · via Greenfive",
-        "metric": "−70 h/mês",
-        "desc": "Plataforma construída do zero para pedido, aprovação e pagamento de benefícios nas 94 empresas do grupo. Substituiu planilhas e conferência manual por um fluxo único, auditável e integrado ao financeiro.",
-        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"]
+        "company": "Greenfive Tecnologia",
+        "role": "Desenvolvedor Fullstack Pleno",
+        "period": "abr 2026 — atual",
+        "length": "4 meses",
+        "current": true,
+        "desc": "Alocado na Ancar Ivanhoe. Direciono decisões de arquitetura e revisões de código do time, com especificação e testes escritos antes do código (SDD e TDD) em fluxo assistido por IA.",
+        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker", "Python", "LangChain"],
+        "deliverables": [
+          {
+            "name": "Gestão de benefícios (VR/VA)",
+            "metric": "−70 h/mês",
+            "note": "Pedido, aprovação e pagamento nas 94 empresas do grupo, integrados ao financeiro."
+          },
+          {
+            "name": "Agente de OCR e cotações",
+            "metric": "−30 h/mês",
+            "note": "Leitura de cotações em PDF e imagem, devolvendo opções de compra já comparadas."
+          },
+          {
+            "name": "Provisão de contingência",
+            "metric": "−6 h/mês",
+            "note": "Cálculo de provisão judicial por categoria e coparticipação, com lançamento no JD Edwards."
+          }
+        ],
+        "metric": "−106 h",
+        "metricNote": "de trabalho manual/mês"
       },
       {
-        "name": "Agente de OCR e cotações",
-        "context": "Ancar Ivanhoe · via Greenfive",
-        "metric": "−30 h/mês",
-        "desc": "Agente que lê cotações de fornecedores em PDF e imagem, extrai e normaliza os dados e devolve as opções de compra já comparadas para os shoppings do grupo. Ganho medido pela própria área de negócio.",
-        "stack": ["Python", "LangChain", "OCR", "LLM"]
+        "company": "Proscale",
+        "role": "Desenvolvedor Fullstack Júnior",
+        "period": "jul 2025 — mar 2026",
+        "length": "9 meses",
+        "tag": "em paralelo",
+        "desc": "Desenvolvimento e manutenção do sistema interno em React e Express, com estado global em Redux e modelagem de dados no MongoDB.",
+        "stack": ["React", "Express", "Redux", "MongoDB"],
+        "metric": "",
+        "metricNote": ""
       },
       {
-        "name": "Provisão de contingência",
-        "context": "Ancar Ivanhoe · via Greenfive",
-        "metric": "−6 h/mês",
-        "desc": "Sistema contábil que calcula a provisão de processos judiciais por categoria, coparticipação e empresas afetadas — incluindo o rateio com lojistas — e faz os lançamentos direto no JD Edwards.",
-        "stack": ["TypeScript", "Node.js", "PostgreSQL", "JD Edwards"]
+        "company": "Centro Clínico Vida e Saúde",
+        "role": "Desenvolvedor Fullstack",
+        "period": "mai 2024 — mai 2025",
+        "length": "1 ano 1 mês",
+        "tag": "em paralelo",
+        "desc": "Conduzi sozinho o ciclo completo: app oficial em Flutter e sistema de convênios com pagamentos, boletos e assinaturas recorrentes. Backend em NestJS, front em React, PostgreSQL com cache em Redis. A telemedicina triplicou o alcance de pacientes, a adesão aos convênios cresceu e a cobrança, antes manual, passou a sair automatizada.",
+        "stack": ["NestJS", "React", "Flutter", "PostgreSQL", "Redis", "Docker", "Jest"],
+        "metric": "3×",
+        "metricNote": "no alcance de pacientes"
+      },
+      {
+        "company": "MIP",
+        "role": "Desenvolvedor Backend",
+        "period": "fev 2024 — set 2024",
+        "length": "8 meses",
+        "tag": "em paralelo",
+        "desc": "Liderei o time de backend na construção de serviços em NestJS com WebSockets e Prisma, em ambiente ágil.",
+        "stack": ["NestJS", "TypeScript", "WebSockets", "Prisma"],
+        "metric": "",
+        "metricNote": ""
+      }
+    ],
+    "prior": [
+      {
+        "company": "Terra",
+        "role": "Assistente de TI · NOC N2/N3",
+        "period": "fev 2024 — mar 2026",
+        "desc": "Monitoramento, diagnóstico avançado e troubleshooting de redes e infraestrutura."
+      },
+      {
+        "company": "Playvender do Brasil",
+        "role": "Assistente de TI",
+        "period": "mai 2023 — jan 2024",
+        "desc": "Servidores, redes e administração de bancos Oracle."
       }
     ]
   },

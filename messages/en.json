@@ -7,7 +7,7 @@
     "label": "Language"
   },
   "Nav": {
-    "items": ["About", "Work", "Experience", "Stack", "Contact"],
+    "items": ["About", "Experience", "Contact"],
     "cta": "Let's talk",
     "themeToDark": "Switch to dark mode",
     "themeToLight": "Switch to light mode"
@@ -16,8 +16,7 @@
     "kicker": "Mid-level Full Stack Developer",
     "title": "I build web systems from the database to the interface.",
     "lead": "End-to-end TypeScript specialist. I take products from zero to deploy — APIs in Node.js and NestJS, interfaces in React and Next.js, with a focus on clean architecture and measurable delivery.",
-    "ctaWork": "See my work",
-    "stackLabel": "Core stack",
+    "ctaWork": "See my experience",
     "facts": [
       {
         "label": "Currently",
@@ -36,33 +35,86 @@
       }
     ]
   },
-  "Work": {
-    "label": "Work",
-    "title": "Three systems in production, each measured in hours given back.",
-    "lead": "Delivered under contract through Greenfive, placed at Ancar Ivanhoe. Scope, architecture and delivery end to end on every one.",
-    "impactLabel": "Measured impact",
-    "stackLabel": "Stack",
-    "projects": [
+  "Experience": {
+    "label": "Experience",
+    "title": "Four years across infrastructure and development.",
+    "lead": "I started in support and networking, which gave me an infrastructure instinct I still use in architecture and deployment decisions.",
+    "priorLabel": "Before that · IT and infrastructure",
+    "roles": [
       {
-        "name": "Benefits management",
-        "context": "Ancar Ivanhoe · via Greenfive",
-        "metric": "−70 h/month",
-        "desc": "Platform built from scratch for requesting, approving and paying benefits across the group's 94 companies. Replaced spreadsheets and manual checking with a single auditable flow wired into finance.",
-        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker"]
+        "company": "Greenfive Tecnologia",
+        "role": "Mid-level Full Stack Developer",
+        "period": "Apr 2026 — present",
+        "length": "4 months",
+        "current": true,
+        "desc": "Placed at Ancar Ivanhoe. I drive architecture decisions and code review for the team, with the spec and tests written before the code (SDD and TDD) in an AI-assisted workflow.",
+        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker", "Python", "LangChain"],
+        "deliverables": [
+          {
+            "name": "Benefits management (meal vouchers)",
+            "metric": "−70 h/month",
+            "note": "Requesting, approving and paying across the group's 94 companies, wired into finance."
+          },
+          {
+            "name": "OCR and quoting agent",
+            "metric": "−30 h/month",
+            "note": "Reads supplier quotes from PDFs and images and returns pre-compared purchasing options."
+          },
+          {
+            "name": "Contingency provisioning",
+            "metric": "−6 h/month",
+            "note": "Legal-case provisions by category and co-participation, posted straight into JD Edwards."
+          }
+        ],
+        "metric": "−106 h",
+        "metricNote": "of manual work/month"
       },
       {
-        "name": "OCR and quoting agent",
-        "context": "Ancar Ivanhoe · via Greenfive",
-        "metric": "−30 h/month",
-        "desc": "Agent that reads supplier quotes from PDFs and images, extracts and normalises the data, and returns pre-compared purchasing options for the group's malls. Savings measured by the business team itself.",
-        "stack": ["Python", "LangChain", "OCR", "LLM"]
+        "company": "Proscale",
+        "role": "Junior Full Stack Developer",
+        "period": "Jul 2025 — Mar 2026",
+        "length": "9 months",
+        "tag": "concurrent",
+        "desc": "Built and maintained the internal system in React and Express, with global state in Redux and data modelling on MongoDB.",
+        "stack": ["React", "Express", "Redux", "MongoDB"],
+        "metric": "",
+        "metricNote": ""
       },
       {
-        "name": "Contingency provisioning",
-        "context": "Ancar Ivanhoe · via Greenfive",
-        "metric": "−6 h/month",
-        "desc": "Accounting system that calculates legal-case provisions by category, co-participation and affected companies — including the split with tenants — and posts the entries straight into JD Edwards.",
-        "stack": ["TypeScript", "Node.js", "PostgreSQL", "JD Edwards"]
+        "company": "Centro Clínico Vida e Saúde",
+        "role": "Full Stack Developer",
+        "period": "May 2024 — May 2025",
+        "length": "1 yr 1 mo",
+        "tag": "concurrent",
+        "desc": "Ran the whole cycle solo: the official Flutter app and a health-plan system with payments, invoices and recurring subscriptions. NestJS backend, React front end, PostgreSQL with Redis caching. Telemedicine tripled the clinic's patient reach, health-plan sign-ups grew, and billing that used to be manual went out automatically.",
+        "stack": ["NestJS", "React", "Flutter", "PostgreSQL", "Redis", "Docker", "Jest"],
+        "metric": "3×",
+        "metricNote": "in patient reach"
+      },
+      {
+        "company": "MIP",
+        "role": "Backend Developer",
+        "period": "Feb 2024 — Sep 2024",
+        "length": "8 months",
+        "tag": "concurrent",
+        "desc": "Led the backend team building services in NestJS with WebSockets and Prisma, in an agile setup.",
+        "stack": ["NestJS", "TypeScript", "WebSockets", "Prisma"],
+        "metric": "",
+        "metricNote": ""
+      }
+    ],
+    "prior": [
+      {
+        "company": "Terra",
+        "role": "IT Analyst · NOC N2/N3",
+        "period": "Feb 2024 — Mar 2026",
+        "desc": "Monitoring, advanced diagnostics and troubleshooting across networks and infrastructure."
+      },
+      {
+        "company": "Playvender do Brasil",
+        "role": "IT Analyst",
+        "period": "May 2023 — Jan 2024",
+        "desc": "Servers, networks and Oracle database administration."
       }
     ]
   },

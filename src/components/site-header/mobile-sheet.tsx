@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 
 import { LocaleSwitcher } from "@/components/locale-switcher";
 
-const HREFS = ["#about", "#work", "#experience", "#stack", "#contact"];
+const HREFS = ["#about", "#experience", "#contact"];
 
 interface MobileSheetProps {
   onClose: () => void;

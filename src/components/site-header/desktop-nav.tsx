@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-const HREFS = ["#about", "#work", "#experience", "#stack", "#contact"];
+const HREFS = ["#about", "#experience", "#contact"];
 
 export function DesktopNav() {
   const t = useTranslations("Nav");

@@ -61,16 +61,15 @@ export function LocaleSwitcher({ size = "compact" }: LocaleSwitcherProps) {
           aria-selected={cur === locale}
           onClick={() => onChange(cur)}
           className={cn(
-            "flex w-full items-center gap-2.5 rounded-[9px] border border-transparent text-left tracking-[-0.012em] transition-colors",
-            isMobile
-              ? "min-h-12 px-3 text-[15px]"
-              : "min-h-[38px] px-3 text-[13.5px]",
-            cur === locale
-              ? "border-brand/45 bg-brand/[0.14] font-semibold text-foreground"
-              : "font-medium text-muted-foreground hover:bg-muted",
+            "flex w-full items-center gap-2.5 rounded-[2px] border-0 bg-transparent text-left tracking-[-0.012em] transition-colors hover:bg-muted",
+            isMobile ? "min-h-[46px] px-2.5 text-[15px]" : "min-h-[34px] px-2.5 text-[13px]",
+            cur === locale ? "font-semibold text-brand" : "font-medium text-foreground",
           )}
         >
           <LocaleFlag locale={cur} />
+          <span className="font-mono text-[10.5px] tracking-[0.09em] text-muted-foreground">
+            {cur.toUpperCase()}
+          </span>
           <span>{NATIVE_NAMES[cur]}</span>
         </button>
       ))}
@@ -89,17 +88,22 @@ export function LocaleSwitcher({ size = "compact" }: LocaleSwitcherProps) {
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={t("label")}
-        className="flex h-9 items-center gap-2.5 rounded-[10px] border border-border bg-muted px-2.5 pr-2.5 text-[13px] font-semibold tracking-[-0.012em] text-foreground transition-colors hover:border-border/80"
+        className="flex h-9 items-center gap-1.5 rounded-[10px] border-0 bg-transparent px-1 text-foreground transition-opacity hover:opacity-60"
       >
         <LocaleFlag locale={locale} />
-        <span>{NATIVE_NAMES[locale]}</span>
+        <span className="font-mono text-[11px] font-medium tracking-[0.09em]">
+          {locale.toUpperCase()}
+        </span>
         <ChevronDown
-          className={cn("size-[11px] transition-transform duration-300", open && "rotate-180")}
+          className={cn(
+            "size-[9px] text-muted-foreground transition-transform duration-300",
+            open && "rotate-180",
+          )}
         />
       </button>
 
       {open && (
-        <div className="absolute top-[calc(100%+8px)] right-0 z-40 min-w-[178px] origin-top-right animate-in fade-in slide-in-from-top-1 rounded-[13px] border border-border bg-popover p-[5px] shadow-lg duration-200">
+        <div className="absolute top-[calc(100%+10px)] right-0 z-40 min-w-[152px] origin-top-right animate-in fade-in slide-in-from-top-1 rounded-[3px] border border-border bg-popover p-1 shadow-lg duration-200">
           {options}
         </div>
       )}
