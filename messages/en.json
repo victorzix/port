@@ -32,6 +32,21 @@
         "label": "Method",
         "value": "Spec and tests before code",
         "note": "SDD and TDD as guardrails for AI-assisted development — written spec and defined tests before a single line."
+      },
+      {
+        "label": "Also current",
+        "value": "Controlbio",
+        "note": "A lab LIMS (ISO/IEC 17025) and an electronic time clock, alongside Greenfive."
+      },
+      {
+        "label": "Impact",
+        "value": "2 in-house systems",
+        "note": "A lab LIMS and an electronic time clock replacing scattered tools and manual spreadsheets, built from scratch."
+      },
+      {
+        "label": "Method",
+        "value": "Spec before code",
+        "note": "SDD on both systems — spec and design approved before coding, with acceptance criteria (BDD) guiding validation."
       }
     ]
   },
@@ -68,6 +83,30 @@
         ],
         "metric": "−106 h",
         "metricNote": "of manual work/month"
+      },
+      {
+        "company": "Controlbio",
+        "role": "Mid-level Full Stack Developer",
+        "period": "Mar 2026 — present",
+        "length": "5 months",
+        "current": true,
+        "tag": "concurrent",
+        "desc": "Working with a team to replace disconnected tools and spreadsheets with two in-house systems, writing the spec before the code (SDD) and shipping via CI/CD straight to Coolify on an internal VPS.",
+        "stack": [".NET", "ASP.NET Core", "Next.js", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
+        "deliverables": [
+          {
+            "name": "Lab LIMS",
+            "metric": "",
+            "note": "Delivered core records, auth, and Excel import/export on a clean .NET architecture (CQRS) and PostgreSQL, following ISO/IEC 17025. Work orders and sample intake are next on the roadmap."
+          },
+          {
+            "name": "Electronic time clock",
+            "metric": "",
+            "note": "Manual and real-time stopwatch time tracking, with a team view for managers and report exports, replacing the previous manual process."
+          }
+        ],
+        "metric": "",
+        "metricNote": ""
       },
       {
         "company": "Proscale",

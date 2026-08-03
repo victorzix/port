@@ -94,12 +94,12 @@ export function RoleItem({ role }: RoleItemProps) {
         </div>
       )}
 
-      <aside className="hidden flex-col gap-1.5 pt-1 sm:col-start-2 sm:row-start-1 sm:flex">
+      <aside className="hidden flex-col items-end pt-1 text-right sm:col-start-2 sm:row-start-1 sm:flex">
         <span className="font-mono text-[10px] tracking-[0.1em] text-muted-foreground uppercase">
           {role.length}
         </span>
         {hasMetric && (
-          <div className="mt-1 flex flex-col gap-1">
+          <div className="mt-1 flex flex-col items-end gap-1">
             <span className="text-[32px] leading-[0.95] font-bold tracking-[-0.05em] text-brand tabular-nums">
               {role.metric}
             </span>

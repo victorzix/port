@@ -32,6 +32,21 @@
         "label": "Método",
         "value": "Spec y tests antes del código",
         "note": "SDD y TDD como barandilla del desarrollo asistido por IA — especificación escrita y tests definidos antes de cualquier línea."
+      },
+      {
+        "label": "También actual",
+        "value": "Controlbio",
+        "note": "Un LIMS de laboratorio (ISO/IEC 17025) y un reloj de ponto electrónico, en paralelo a Greenfive."
+      },
+      {
+        "label": "Impacto",
+        "value": "2 sistemas propios",
+        "note": "Un LIMS de laboratorio y un reloj de ponto electrónico que reemplazan herramientas sueltas y planillas manuales, construidos desde cero."
+      },
+      {
+        "label": "Método",
+        "value": "Spec antes del código",
+        "note": "SDD en los dos sistemas — spec y diseño aprobados antes de programar, con criterios de aceptación (BDD) guiando la validación."
       }
     ]
   },
@@ -68,6 +83,30 @@
         ],
         "metric": "−106 h",
         "metricNote": "de trabajo manual/mes"
+      },
+      {
+        "company": "Controlbio",
+        "role": "Desarrollador Fullstack Semi Senior",
+        "period": "mar 2026 — actual",
+        "length": "5 meses",
+        "current": true,
+        "tag": "en paralelo",
+        "desc": "En equipo, vengo reemplazando herramientas sueltas y planillas por dos sistemas propios, con especificación escrita antes del código (SDD) y CI/CD publicando directo en Coolify en una VPS interna.",
+        "stack": [".NET", "ASP.NET Core", "Next.js", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
+        "deliverables": [
+          {
+            "name": "LIMS de laboratorio",
+            "metric": "",
+            "note": "Registros, autenticación e importación/exportación en Excel entregados, con arquitectura limpia en .NET (CQRS) y PostgreSQL, siguiendo la ISO/IEC 17025. Órdenes de servicio y recepción de muestras son los próximos pasos del roadmap."
+          },
+          {
+            "name": "Reloj de ponto electrónico",
+            "metric": "",
+            "note": "Registro de ponto manual y por cronómetro en tiempo real, con vista de equipo para gestores y exportación de reportes, reemplazando el control anterior."
+          }
+        ],
+        "metric": "",
+        "metricNote": ""
       },
       {
         "company": "Proscale",

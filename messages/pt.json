@@ -32,6 +32,21 @@
         "label": "Método",
         "value": "Spec e teste antes do código",
         "note": "SDD e TDD como guarda-corpo do desenvolvimento assistido por IA — especificação escrita e testes definidos antes de qualquer linha."
+      },
+      {
+        "label": "Também atual",
+        "value": "Controlbio",
+        "note": "LIMS de laboratório (ISO/IEC 17025) e ponto eletrônico, em paralelo à Greenfive."
+      },
+      {
+        "label": "Impacto",
+        "value": "2 sistemas próprios",
+        "note": "LIMS de laboratório e ponto eletrônico substituindo ferramentas soltas e planilhas manuais, construídos do zero."
+      },
+      {
+        "label": "Método",
+        "value": "Spec antes do código",
+        "note": "SDD nos dois sistemas — spec e design aprovados antes de codar, com critérios de aceite (BDD) guiando a validação."
       }
     ]
   },
@@ -68,6 +83,30 @@
         ],
         "metric": "−106 h",
         "metricNote": "de trabalho manual/mês"
+      },
+      {
+        "company": "Controlbio",
+        "role": "Desenvolvedor Fullstack Pleno",
+        "period": "mar 2026 — atual",
+        "length": "5 meses",
+        "current": true,
+        "tag": "em paralelo",
+        "desc": "Em time, venho substituindo ferramentas soltas e planilhas por dois sistemas próprios, com especificação escrita antes do código (SDD) e CI/CD publicando direto no Coolify de uma VPS interna.",
+        "stack": [".NET", "ASP.NET Core", "Next.js", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
+        "deliverables": [
+          {
+            "name": "LIMS de laboratório",
+            "metric": "",
+            "note": "Cadastros, autenticação e importação/exportação em Excel entregues, com arquitetura limpa em .NET (CQRS) e PostgreSQL, seguindo a ISO/IEC 17025. Ordens de serviço e recepção de amostras são os próximos passos do roadmap."
+          },
+          {
+            "name": "Ponto eletrônico",
+            "metric": "",
+            "note": "Registro de ponto manual e por cronômetro em tempo real, com visão de equipe para gestores e exportação de relatórios, substituindo o controle anterior."
+          }
+        ],
+        "metric": "",
+        "metricNote": ""
       },
       {
         "company": "Proscale",
