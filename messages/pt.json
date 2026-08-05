@@ -44,6 +44,18 @@
       }
     ]
   },
+  "About": {
+    "label": "Sobre",
+    "title": "De manter sistemas a construí-los.",
+    "body": "Vim de TI e infraestrutura estudando desenvolvimento em paralelo — hoje construo os sistemas que antes eu só mantinha.",
+    "body2": "Antes de codar eu monto laboratório, protótipo e documentação. É assim que alinho o que a área precisa com o que o sistema precisa.",
+    "methodLabel": "Como eu trabalho",
+    "method": [
+      "Laboratório e protótipo antes do código",
+      "Especificação e testes antes da implementação",
+      "Entrega em fatias que a área vê funcionando"
+    ]
+  },
   "Experience": {
     "label": "Experiência",
     "title": "Quatro anos entre infraestrutura e desenvolvimento.",

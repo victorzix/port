@@ -44,6 +44,18 @@
       }
     ]
   },
+  "About": {
+    "label": "About",
+    "title": "From maintaining systems to building them.",
+    "body": "I came from IT and infrastructure while studying development on the side — today I build the systems I used to only maintain.",
+    "body2": "Before writing code I build labs, prototypes and documentation. That is how I line up what the team needs with what the system needs.",
+    "methodLabel": "How I work",
+    "method": [
+      "Labs and prototypes before code",
+      "Spec and tests before implementation",
+      "Shipped in slices the team can see working"
+    ]
+  },
   "Experience": {
     "label": "Experience",
     "title": "Four years across infrastructure and development.",

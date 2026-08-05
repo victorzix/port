@@ -44,6 +44,18 @@
       }
     ]
   },
+  "About": {
+    "label": "Sobre mí",
+    "title": "De mantener sistemas a construirlos.",
+    "body": "Vine de TI e infraestructura estudiando desarrollo en paralelo — hoy construyo los sistemas que antes solo mantenía.",
+    "body2": "Antes de programar armo laboratorios, prototipos y documentación. Así alineo lo que el área necesita con lo que el sistema necesita.",
+    "methodLabel": "Cómo trabajo",
+    "method": [
+      "Laboratorio y prototipo antes del código",
+      "Especificación y tests antes de la implementación",
+      "Entrega en partes que el área ve funcionando"
+    ]
+  },
   "Experience": {
     "label": "Experiencia",
     "title": "Cuatro años entre infraestructura y desarrollo.",
