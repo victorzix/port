@@ -1,3 +1,6 @@
+import { StackIcon } from "@/components/experience/stack-icon";
+import { NumberTicker } from "@/components/motion/number-ticker";
+import { Reveal } from "@/components/motion/reveal";
 import { cn } from "@/lib/utils";
 
 interface Deliverable {
@@ -22,15 +25,20 @@ interface Role {
 
 interface RoleItemProps {
   role: Role;
+  /** Position in the timeline — drives the reveal stagger. */
+  index?: number;
 }
 
-export function RoleItem({ role }: RoleItemProps) {
+export function RoleItem({ role, index = 0 }: RoleItemProps) {
   const hasMetric = Boolean(role.metric);
   const hasDeliverables = Boolean(role.deliverables?.length);
-  const stackLine = role.stack.join("   /   ");
 
   return (
-    <article className="grid grid-cols-1 gap-3.5 border-t border-border py-6 sm:grid-cols-[1fr_184px] sm:gap-x-10 sm:py-8">
+    <Reveal
+      as="article"
+      delay={(index % 4) * 70}
+      className="grid grid-cols-1 gap-3.5 border-t border-border py-6 sm:grid-cols-[1fr_184px] sm:gap-x-10 sm:py-8"
+    >
       <div className="flex min-w-0 flex-col gap-3.5">
         <div className="flex flex-col gap-1">
           <div className="mb-0.5 flex flex-wrap items-baseline gap-2">
@@ -58,14 +66,23 @@ export function RoleItem({ role }: RoleItemProps) {
         <p className="max-w-[74ch] text-[14px] leading-[1.6] tracking-[-0.006em] text-pretty text-muted-foreground sm:text-[15.5px]">
           {role.desc}
         </p>
-        <p className="font-mono text-[11.5px] leading-[1.9] tracking-[0.01em] text-foreground">
-          {stackLine}
-        </p>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          {role.stack.map((item) => (
+            <span
+              key={item}
+              className="inline-flex items-center gap-[7px] font-mono text-[11.5px] tracking-[0.01em] text-foreground"
+            >
+              <StackIcon name={item} />
+              {item}
+            </span>
+          ))}
+        </div>
         {hasMetric && (
           <div className="flex flex-wrap items-baseline gap-2.5 sm:hidden">
-            <span className="text-3xl font-bold tracking-[-0.045em] text-brand tabular-nums">
-              {role.metric}
-            </span>
+            <NumberTicker
+              value={role.metric!}
+              className="text-3xl font-bold tracking-[-0.045em] text-brand tabular-nums"
+            />
             <span className="text-[13px] whitespace-nowrap text-muted-foreground">
               {role.metricNote}
             </span>
@@ -83,9 +100,10 @@ export function RoleItem({ role }: RoleItemProps) {
               <span className="text-[15.5px] font-semibold tracking-[-0.024em] text-foreground">
                 {d.name}
               </span>
-              <span className="font-mono text-[12.5px] tracking-[0.02em] whitespace-nowrap text-brand tabular-nums sm:justify-self-end">
-                {d.metric}
-              </span>
+              <NumberTicker
+                value={d.metric}
+                className="font-mono text-[12.5px] tracking-[0.02em] whitespace-nowrap text-brand tabular-nums sm:justify-self-end"
+              />
               <span className="max-w-[74ch] text-[13.5px] leading-[1.55] tracking-[-0.006em] text-pretty text-muted-foreground sm:col-start-1">
                 {d.note}
               </span>
@@ -100,15 +118,16 @@ export function RoleItem({ role }: RoleItemProps) {
         </span>
         {hasMetric && (
           <div className="mt-1 flex flex-col items-end gap-1">
-            <span className="text-[32px] leading-[0.95] font-bold tracking-[-0.05em] text-brand tabular-nums">
-              {role.metric}
-            </span>
+            <NumberTicker
+              value={role.metric!}
+              className="text-[32px] leading-[0.95] font-bold tracking-[-0.05em] text-brand tabular-nums"
+            />
             <span className="max-w-[16ch] text-[12.5px] leading-[1.4] tracking-[-0.008em] text-muted-foreground">
               {role.metricNote}
             </span>
           </div>
         )}
       </aside>
-    </article>
+    </Reveal>
   );
 }

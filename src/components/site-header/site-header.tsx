@@ -20,7 +20,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/86 backdrop-blur-md backdrop-saturate-150">
       <div
         className={cn(
-          "mx-auto flex max-w-[1080px] items-center gap-3 px-4 transition-[height] duration-[380ms] ease-out sm:px-16",
+          "mx-auto flex max-w-[1200px] items-center gap-3 px-4 transition-[height] duration-[380ms] ease-out sm:px-16",
           condensed ? "h-14 sm:h-16" : "h-[66px] sm:h-[84px]",
         )}
       >

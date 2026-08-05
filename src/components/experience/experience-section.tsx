@@ -52,8 +52,8 @@ export function ExperienceSection() {
       </p>
 
       <div className="mt-10 flex flex-col sm:mt-16">
-        {roles.map((role) => (
-          <RoleItem key={role.company} role={role} />
+        {roles.map((role, index) => (
+          <RoleItem key={role.company} role={role} index={index} />
         ))}
       </div>
 
@@ -62,8 +62,8 @@ export function ExperienceSection() {
           {t("priorLabel")}
         </span>
         <div className="grid grid-cols-1 gap-4.5 sm:grid-cols-2 sm:gap-12">
-          {prior.map((role) => (
-            <PriorRoleItem key={role.company} role={role} />
+          {prior.map((role, index) => (
+            <PriorRoleItem key={role.company} role={role} index={index} />
           ))}
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
-      <main className="mx-auto max-w-[1080px] px-4 pt-10 pb-18 sm:px-16 sm:pt-16 sm:pb-35">
+      <main className="mx-auto max-w-[1200px] px-4 pt-10 pb-18 sm:px-16 sm:pt-16 sm:pb-35">
         <HeroSection />
         <ExperienceSection />
         <SiteFooter />
