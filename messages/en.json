@@ -8,14 +8,18 @@
   },
   "Nav": {
     "items": ["About", "Experience", "Contact"],
-    "cta": "Let's talk",
     "themeToDark": "Switch to dark mode",
     "themeToLight": "Switch to light mode"
   },
   "Hero": {
     "kicker": "Mid-level Full Stack Developer",
-    "title": "I build web systems from the database to the interface.",
-    "lead": "End-to-end TypeScript specialist. I take products from zero to deploy — APIs in Node.js and NestJS, interfaces in React and Next.js, with a focus on clean architecture and measurable delivery.",
+    "kickers": [
+      "Mid-level Full Stack Developer",
+      "TypeScript, .NET and a bit of Python",
+      "From the database to the deploy"
+    ],
+    "title": "Internal systems that erase manual work.",
+    "lead": "I work in TypeScript and .NET, building internal systems end to end — from the data model to the deploy. The five I have shipped so far remove more than 100 hours of manual work every month.",
     "ctaWork": "See my experience",
     "facts": [
       {
@@ -29,11 +33,6 @@
         "note": "Hours of manual work removed every month across the three systems — figures validated by the business teams."
       },
       {
-        "label": "Method",
-        "value": "Spec and tests before code",
-        "note": "SDD and TDD as guardrails for AI-assisted development — written spec and defined tests before a single line."
-      },
-      {
         "label": "Also current",
         "value": "Controlbio",
         "note": "A lab LIMS (ISO/IEC 17025) and an electronic time clock, alongside Greenfive."
@@ -42,11 +41,6 @@
         "label": "Impact",
         "value": "2 in-house systems",
         "note": "A lab LIMS and an electronic time clock replacing scattered tools and manual spreadsheets, built from scratch."
-      },
-      {
-        "label": "Method",
-        "value": "Spec before code",
-        "note": "SDD on both systems — spec and design approved before coding, with acceptance criteria (BDD) guiding validation."
       }
     ]
   },
@@ -156,6 +150,9 @@
         "desc": "Servers, networks and Oracle database administration."
       }
     ]
+  },
+  "Footer": {
+    "updated": "Updated Aug 2026"
   },
   "ProjectsPage": {
     "title": "Projects",

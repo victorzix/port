@@ -8,14 +8,18 @@
   },
   "Nav": {
     "items": ["Sobre", "Experiência", "Contato"],
-    "cta": "Vamos conversar",
     "themeToDark": "Ativar modo escuro",
     "themeToLight": "Ativar modo claro"
   },
   "Hero": {
     "kicker": "Desenvolvedor Fullstack Pleno",
-    "title": "Construo sistemas web do banco de dados à interface.",
-    "lead": "Especializado em TypeScript ponta a ponta. Levo produtos do zero ao deploy — APIs em Node.js e NestJS, interfaces em React e Next.js, com foco em arquitetura limpa e entrega mensurável.",
+    "kickers": [
+      "Desenvolvedor Fullstack Pleno",
+      "TypeScript, .NET e um pouco de Python",
+      "Do banco de dados ao deploy"
+    ],
+    "title": "Sistemas internos que apagam trabalho manual.",
+    "lead": "Trabalho com TypeScript e .NET construindo sistemas internos de ponta a ponta — do modelo de dados ao deploy. Os cinco que já subi em produção eliminam mais de 100 horas de trabalho manual por mês.",
     "ctaWork": "Ver experiência",
     "facts": [
       {
@@ -29,11 +33,6 @@
         "note": "Horas de trabalho manual eliminadas por mês somando os três sistemas — números validados pelas áreas de negócio."
       },
       {
-        "label": "Método",
-        "value": "Spec e teste antes do código",
-        "note": "SDD e TDD como guarda-corpo do desenvolvimento assistido por IA — especificação escrita e testes definidos antes de qualquer linha."
-      },
-      {
         "label": "Também atual",
         "value": "Controlbio",
         "note": "LIMS de laboratório (ISO/IEC 17025) e ponto eletrônico, em paralelo à Greenfive."
@@ -42,11 +41,6 @@
         "label": "Impacto",
         "value": "2 sistemas próprios",
         "note": "LIMS de laboratório e ponto eletrônico substituindo ferramentas soltas e planilhas manuais, construídos do zero."
-      },
-      {
-        "label": "Método",
-        "value": "Spec antes do código",
-        "note": "SDD nos dois sistemas — spec e design aprovados antes de codar, com critérios de aceite (BDD) guiando a validação."
       }
     ]
   },
@@ -156,6 +150,9 @@
         "desc": "Servidores, redes e administração de bancos Oracle."
       }
     ]
+  },
+  "Footer": {
+    "updated": "Atualizado em ago 2026"
   },
   "ProjectsPage": {
     "title": "Projetos",

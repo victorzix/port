@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { BrandMark } from "@/components/site-header/brand-mark";
@@ -13,7 +12,6 @@ import { useScrollProgress } from "@/hooks/use-scroll-progress";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
-  const t = useTranslations("Nav");
   const [menuOpen, setMenuOpen] = useState(false);
   const { progress, condensed: scrolledCondensed } = useScrollProgress();
   const condensed = scrolledCondensed && !menuOpen;
@@ -35,15 +33,6 @@ export function SiteHeader() {
           </div>
           <span className="mx-1.5 hidden h-[18px] w-px bg-border lg:block" />
           <ThemeToggleButton />
-          <a
-            href="#contact"
-            className="hidden h-10 items-center gap-2.5 rounded-full border border-border pr-1.5 pl-4 text-[13px] font-semibold tracking-[-0.01em] text-foreground transition-colors hover:border-brand hover:bg-muted lg:inline-flex"
-          >
-            {t("cta")}
-            <span className="grid size-[26px] place-items-center rounded-full bg-brand text-xs text-white">
-              →
-            </span>
-          </a>
           <MobileMenuButton open={menuOpen} onToggle={() => setMenuOpen((v) => !v)} />
         </div>
       </div>

@@ -8,14 +8,18 @@
   },
   "Nav": {
     "items": ["Sobre mí", "Experiencia", "Contacto"],
-    "cta": "Hablemos",
     "themeToDark": "Activar modo oscuro",
     "themeToLight": "Activar modo claro"
   },
   "Hero": {
     "kicker": "Desarrollador Fullstack Semi Senior",
-    "title": "Construyo sistemas web desde la base de datos hasta la interfaz.",
-    "lead": "Especializado en TypeScript de punta a punta. Llevo productos de cero al deploy — APIs en Node.js y NestJS, interfaces en React y Next.js, con foco en arquitectura limpia y entrega medible.",
+    "kickers": [
+      "Desarrollador Fullstack Semi Senior",
+      "TypeScript, .NET y algo de Python",
+      "De la base de datos al deploy"
+    ],
+    "title": "Sistemas internos que borran el trabajo manual.",
+    "lead": "Trabajo con TypeScript y .NET construyendo sistemas internos de punta a punta — del modelo de datos al deploy. Los cinco que ya puse en producción eliminan más de 100 horas de trabajo manual al mes.",
     "ctaWork": "Ver experiencia",
     "facts": [
       {
@@ -29,11 +33,6 @@
         "note": "Horas de trabajo manual eliminadas cada mes sumando los tres sistemas — cifras validadas por las áreas de negocio."
       },
       {
-        "label": "Método",
-        "value": "Spec y tests antes del código",
-        "note": "SDD y TDD como barandilla del desarrollo asistido por IA — especificación escrita y tests definidos antes de cualquier línea."
-      },
-      {
         "label": "También actual",
         "value": "Controlbio",
         "note": "Un LIMS de laboratorio (ISO/IEC 17025) y un reloj de ponto electrónico, en paralelo a Greenfive."
@@ -42,11 +41,6 @@
         "label": "Impacto",
         "value": "2 sistemas propios",
         "note": "Un LIMS de laboratorio y un reloj de ponto electrónico que reemplazan herramientas sueltas y planillas manuales, construidos desde cero."
-      },
-      {
-        "label": "Método",
-        "value": "Spec antes del código",
-        "note": "SDD en los dos sistemas — spec y diseño aprobados antes de programar, con criterios de aceptación (BDD) guiando la validación."
       }
     ]
   },
@@ -156,6 +150,9 @@
         "desc": "Servidores, redes y administración de bases Oracle."
       }
     ]
+  },
+  "Footer": {
+    "updated": "Actualizado ago 2026"
   },
   "ProjectsPage": {
     "title": "Proyectos",

@@ -36,7 +36,7 @@ export function ExperienceSection() {
   const prior = t.raw("prior") as PriorRole[];
 
   return (
-    <section id="experience" className="mt-22 scroll-mt-28 sm:mt-40">
+    <section id="experience" className="mt-16 scroll-mt-28 sm:mt-26">
       <div className="mb-4.5 flex items-baseline gap-3 sm:mb-6.5">
         <span className="font-mono text-[10px] tracking-[0.12em] text-brand">02</span>
         <span className="font-mono text-[9.5px] tracking-[0.14em] text-muted-foreground uppercase">

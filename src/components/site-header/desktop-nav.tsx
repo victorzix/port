@@ -11,18 +11,23 @@ export function DesktopNav() {
       aria-label="Primary"
       className="hidden items-stretch self-stretch lg:ml-auto lg:flex"
     >
-      {items.map((label, index) => (
-        <a
-          key={label}
-          href={HREFS[index]}
-          className="flex items-center gap-1.5 px-3.5 text-[13.5px] font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <span className="font-mono text-[9.5px] tracking-[0.06em] text-border">
-            0{index + 1}
-          </span>
-          {label}
-        </a>
-      ))}
+      {items.map((label, index) => {
+        const disabled = index === 2;
+        return (
+          <a
+            key={label}
+            href={HREFS[index]}
+            aria-disabled={disabled}
+            tabIndex={disabled ? -1 : undefined}
+            className="flex items-center gap-1.5 px-3.5 text-[13.5px] font-medium tracking-[-0.01em] text-muted-foreground transition-colors hover:text-foreground aria-disabled:pointer-events-none aria-disabled:opacity-[0.38]"
+          >
+            <span className="font-mono text-[9.5px] tracking-[0.06em] text-border">
+              0{index + 1}
+            </span>
+            {label}
+          </a>
+        );
+      })}
     </nav>
   );
 }
