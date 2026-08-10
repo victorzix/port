@@ -163,6 +163,23 @@
       }
     ]
   },
+  "Education": {
+    "label": "Education",
+    "title": "Education and languages.",
+    "langLabel": "Languages",
+    "items": [
+      {
+        "period": "Feb 2023 — Dec 2025",
+        "course": "Associate Degree in Systems Analysis and Development",
+        "institution": "Estácio"
+      }
+    ],
+    "languages": [
+      { "name": "Portuguese", "level": "Native" },
+      { "name": "English", "level": "Fluent" },
+      { "name": "French", "level": "Basic" }
+    ]
+  },
   "Footer": {
     "updated": "Updated Aug 2026"
   },

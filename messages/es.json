@@ -163,6 +163,23 @@
       }
     ]
   },
+  "Education": {
+    "label": "Formación",
+    "title": "Formación académica e idiomas.",
+    "langLabel": "Idiomas",
+    "items": [
+      {
+        "period": "feb 2023 — dic 2025",
+        "course": "Tecnólogo en Análisis y Desarrollo de Sistemas",
+        "institution": "Estácio"
+      }
+    ],
+    "languages": [
+      { "name": "Portugués", "level": "Nativo" },
+      { "name": "Inglés", "level": "Fluido" },
+      { "name": "Francés", "level": "Básico" }
+    ]
+  },
   "Footer": {
     "updated": "Actualizado ago 2026"
   },
