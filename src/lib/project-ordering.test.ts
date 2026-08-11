@@ -37,8 +37,8 @@ describe("compareProjects", () => {
   });
 
   it("sinks a project with no releases below one that has them", () => {
-    const released = project({ name: "A" });
-    const unreleased = project({ latestReleasedAt: null, name: "B" });
+    const released = project({ name: "Zebra" });
+    const unreleased = project({ latestReleasedAt: null, name: "Alpha" });
     expect([unreleased, released].sort(compareProjects)).toEqual([
       released,
       unreleased,
