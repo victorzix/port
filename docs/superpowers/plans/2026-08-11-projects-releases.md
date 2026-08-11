@@ -1571,13 +1571,16 @@ Two components become shared and move out of feature folders. The nav gets a sin
 **Files:**
 - Move: `src/components/experience/stack-icon.tsx` → `src/components/stack-icon.tsx`
 - Move: `src/components/changelog/markdown-content.tsx` → `src/components/markdown-content.tsx`
-- Modify: `src/components/experience/role-item.tsx` (import path)
+- Create: `src/components/stack-list.tsx`
+- Modify: `src/components/experience/role-item.tsx` (import path + use `StackList`)
 - Create: `src/components/site-header/nav-items.ts`
 - Modify: `src/components/site-header/desktop-nav.tsx`
 - Modify: `src/components/site-header/mobile-sheet.tsx`
 
 **Interfaces:**
-- Produces: `NAV_ITEMS: readonly NavItem[]` where `NavItem = { href: string; kind: "anchor" | "route"; disabled?: boolean }`.
+- Produces:
+  - `StackList({ items }: { items: string[] })` — the glyph + label row, used by `role-item.tsx` (this task), `project-ledger-row.tsx` (Task 10) and the detail page (Task 11)
+  - `NAV_ITEMS: readonly NavItem[]` where `NavItem = { href: string; kind: "anchor" | "route"; disabled?: boolean }`
 
 - [ ] **Step 1: Move the shared components**
 
@@ -1586,24 +1589,52 @@ git mv src/components/experience/stack-icon.tsx src/components/stack-icon.tsx
 git mv src/components/changelog/markdown-content.tsx src/components/markdown-content.tsx
 ```
 
-- [ ] **Step 2: Fix the importers**
+- [ ] **Step 2: Extract the shared stack list and fix importers**
 
-In `src/components/experience/role-item.tsx`, change:
+Three places need the same glyph + label row — `role-item.tsx` already has it, and Tasks 10 and 11 both need it. Extract it once rather than writing it three times.
 
-```ts
-import { StackIcon } from "@/components/experience/stack-icon";
-```
+Copy the markup verbatim from the existing block in `src/components/experience/role-item.tsx` so the experience timeline is pixel-identical afterwards:
 
-to:
-
-```ts
+```tsx
+// src/components/stack-list.tsx
 import { StackIcon } from "@/components/stack-icon";
+
+interface StackListProps {
+  items: string[];
+}
+
+/**
+ * Stack labels with their monochrome brand glyphs. Shared by the experience
+ * timeline, the projects ledger and the project detail header so the three
+ * stay visually identical.
+ */
+export function StackList({ items }: StackListProps) {
+  if (items.length === 0) return null;
+
+  return (
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+      {items.map((item) => (
+        <span
+          key={item}
+          className="inline-flex items-center gap-[7px] font-mono text-[11.5px] tracking-[0.01em] text-foreground"
+        >
+          <StackIcon name={item} />
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
 ```
 
-Then find any other importer:
+Then in `src/components/experience/role-item.tsx`: replace the `import { StackIcon } from "@/components/experience/stack-icon";` line with `import { StackList } from "@/components/stack-list";`, and replace that component's inline `<div className="flex flex-wrap items-center gap-x-4 gap-y-2">…</div>` stack block with `<StackList items={role.stack} />`.
+
+Then confirm no stale import paths remain:
 
 Run: `grep -rn "experience/stack-icon\|changelog/markdown-content" src`
-Expected after fixing: no matches.
+Expected: no matches.
+
+Verify the experience section is visually unchanged when you check the browser in Step 6.
 
 - [ ] **Step 3: Create the nav config**
 
@@ -1818,7 +1849,7 @@ import { useTranslations } from "next-intl";
 
 import { Reveal } from "@/components/motion/reveal";
 import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
-import { StackIcon } from "@/components/stack-icon";
+import { StackList } from "@/components/stack-list";
 import { Link } from "@/i18n/navigation";
 import type { ProjectListItem } from "@/server/view-models/project";
 
@@ -1853,19 +1884,7 @@ export function ProjectLedgerRow({ project, index = 0 }: ProjectLedgerRowProps) 
           <p className="max-w-[74ch] text-[14px] leading-[1.6] tracking-[-0.006em] text-pretty text-muted-foreground sm:text-[15.5px]">
             {project.description}
           </p>
-          {project.stack.length > 0 && (
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              {project.stack.map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center gap-[7px] font-mono text-[11.5px] tracking-[0.01em] text-foreground"
-                >
-                  <StackIcon name={item} />
-                  {item}
-                </span>
-              ))}
-            </div>
-          )}
+          <StackList items={project.stack} />
         </div>
 
         <div className="flex flex-row items-baseline gap-3 sm:flex-col sm:items-end sm:gap-1 sm:text-right">
@@ -2261,7 +2280,7 @@ import { ReleaseTimeline } from "@/components/releases/release-timeline";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header/site-header";
 import { MarkdownContent } from "@/components/markdown-content";
-import { StackIcon } from "@/components/stack-icon";
+import { StackList } from "@/components/stack-list";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/locales";
 import { getProjectBySlugForLocale } from "@/server/services/project-service";
@@ -2327,19 +2346,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
             {project.description}
           </p>
 
-          {project.stack.length > 0 && (
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              {project.stack.map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center gap-[7px] font-mono text-[11.5px] tracking-[0.01em] text-foreground"
-                >
-                  <StackIcon name={item} />
-                  {item}
-                </span>
-              ))}
-            </div>
-          )}
+          <StackList items={project.stack} />
 
           <ProjectLinks repoUrl={project.repoUrl} liveUrl={project.liveUrl} />
         </div>
