@@ -41,8 +41,9 @@ yarn-error.log*
 # vercel
 .vercel
 
-# local docs (not for commit)
-/docs
+# local docs (not for commit) — specs are the exception
+/docs/*
+!/docs/superpowers/
 
 # typescript
 *.tsbuildinfo
