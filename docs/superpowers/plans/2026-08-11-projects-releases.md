@@ -1805,7 +1805,7 @@ git commit -m "Share stack icon and markdown content, add nav config with routes
 - Delete: `src/components/projects/project-list.tsx`
 
 **Interfaces:**
-- Consumes: `ProjectListItem` (Task 6), `getProjectsForLocale` (Task 6), `StackIcon` (Task 9), `Reveal` (existing), message keys (Task 8).
+- Consumes: `ProjectListItem` (Task 6), `getProjectsForLocale` (Task 6), `StackList` (Task 9), `Reveal` (existing), message keys (Task 8).
 - Produces: `ProjectLedger`, `ProjectLedgerRow`, `ProjectStatusBadge`, `ProjectsEmpty`.
 
 Measurements come from `src/components/experience/role-item.tsx` — read it first and match it rather than inventing spacing.
@@ -2050,7 +2050,7 @@ git commit -m "Rebuild projects index as an editorial ledger"
 - Delete: `src/components/changelog/changelog-entry-item.tsx`
 
 **Interfaces:**
-- Consumes: `ProjectDetailView` / `ReleaseView` / `ReleaseChangeView` (Task 6), `getProjectBySlugForLocale` (Task 6), `versionAnchor` (Task 2), `MarkdownContent` / `StackIcon` (Task 9), message keys (Task 8).
+- Consumes: `ProjectDetailView` / `ReleaseView` / `ReleaseChangeView` (Task 6), `getProjectBySlugForLocale` (Task 6), `versionAnchor` (Task 2), `MarkdownContent` / `StackList` (Task 9), message keys (Task 8).
 - Produces: `ReleaseTimeline`, `ReleaseItem`, `ReleaseChangeList`, `ChangeTypeGlyph`.
 
 - [ ] **Step 1: Build the change glyph**
