@@ -396,9 +396,13 @@ describe("compareProjects", () => {
     expect([older, newer].sort(compareProjects)).toEqual([newer, older]);
   });
 
+  // Names are deliberately inverted against the expected order: alphabetically
+  // "Alpha" < "Zebra", so an implementation that ignored the release-date rule
+  // and fell through to localeCompare would fail this test. With A/B names it
+  // would pass for the wrong reason.
   it("sinks a project with no releases below one that has them", () => {
-    const released = project({ name: "A" });
-    const unreleased = project({ latestReleasedAt: null, name: "B" });
+    const released = project({ name: "Zebra" });
+    const unreleased = project({ latestReleasedAt: null, name: "Alpha" });
     expect([unreleased, released].sort(compareProjects)).toEqual([
       released,
       unreleased,
