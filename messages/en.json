@@ -7,7 +7,7 @@
     "label": "Language"
   },
   "Nav": {
-    "items": ["About", "Experience", "Contact"],
+    "items": ["About", "Experience", "Projects", "Contact"],
     "themeToDark": "Switch to dark mode",
     "themeToLight": "Switch to light mode"
   },
@@ -184,18 +184,38 @@
     "updated": "Updated Aug 2026"
   },
   "ProjectsPage": {
-    "title": "Projects",
-    "description": "A collection of things I've built.",
-    "empty": "No projects yet — check back soon."
+    "num": "03",
+    "label": "Projects",
+    "title": "Things I build and keep in the open.",
+    "lead": "Personal and open work, each with its own release history. Client and employer systems live in Experience.",
+    "empty": {
+      "title": "Nothing published yet.",
+      "body": "The first open projects land here with their full release history."
+    },
+    "status": {
+      "active": "Active",
+      "wip": "In progress",
+      "archived": "Archived"
+    },
+    "releaseCount": "{count, plural, =0 {no releases} one {# release} other {# releases}}",
+    "latestVersion": "Latest"
   },
   "ProjectDetail": {
-    "backToProjects": "Back to projects",
-    "changelogHeading": "Changelog",
-    "changelogEmpty": "No updates yet.",
-    "repoLink": "View source",
-    "liveLink": "View live"
+    "back": "All projects",
+    "startedIn": "Started in {year}",
+    "releasesHeading": "Releases",
+    "releasesEmpty": "No releases published yet.",
+    "repoLink": "Source",
+    "liveLink": "Live"
   },
-  "ChangelogEntry": {
-    "publishedOn": "Published {date}"
+  "ReleaseChange": {
+    "type": {
+      "added": "Added",
+      "changed": "Changed",
+      "fixed": "Fixed",
+      "removed": "Removed",
+      "deprecated": "Deprecated",
+      "security": "Security"
+    }
   }
 }
