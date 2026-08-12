@@ -1,3 +1,4 @@
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 interface BrandMarkProps {
@@ -10,8 +11,8 @@ const V_CLIP =
 
 export function BrandMark({ condensed }: BrandMarkProps) {
   return (
-    <a
-      href="#top"
+    <Link
+      href="/#top"
       aria-label="Victor Raphael — home"
       className="flex min-w-0 shrink items-center gap-[11px] text-foreground"
     >
@@ -40,6 +41,6 @@ export function BrandMark({ condensed }: BrandMarkProps) {
           Full Stack Dev
         </span>
       </span>
-    </a>
+    </Link>
   );
 }

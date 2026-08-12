@@ -32,25 +32,21 @@ export function MobileSheet({ onClose }: MobileSheetProps) {
             </>
           );
 
-          if (item.kind === "route") {
-            return (
-              <Link key={item.href} href={item.href} onClick={onClose} className={ITEM_CLASS}>
-                {body}
-              </Link>
-            );
-          }
+          // Anchors are root-relative so they resolve from any route
+          // (next-intl then localizes the path portion and keeps the hash).
+          const href = item.kind === "anchor" ? `/${item.href}` : item.href;
 
           return (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
+              href={href}
               onClick={item.disabled ? undefined : onClose}
               aria-disabled={item.disabled}
               tabIndex={item.disabled ? -1 : undefined}
               className={ITEM_CLASS}
             >
               {body}
-            </a>
+            </Link>
           );
         })}
       </div>

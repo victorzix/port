@@ -13,5 +13,11 @@ export default getRequestConfig(async ({ requestLocale }) => {
   return {
     locale,
     messages: MESSAGES[locale],
+    formats: {
+      dateTime: {
+        long: { day: "numeric", month: "long", year: "numeric" },
+      },
+    },
+    timeZone: "America/Sao_Paulo",
   };
 });

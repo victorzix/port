@@ -18,27 +18,21 @@ export function DesktopNav() {
       {NAV_ITEMS.map((item, index) => {
         const label = items[index];
         const num = <span className="font-mono text-[9.5px] tracking-[0.06em] text-border">0{index + 1}</span>;
-
-        if (item.kind === "route") {
-          return (
-            <Link key={item.href} href={item.href} className={LINK_CLASS}>
-              {num}
-              {label}
-            </Link>
-          );
-        }
+        // Anchors are root-relative so they resolve from any route (next-intl
+        // then localizes the path portion and keeps the hash intact).
+        const href = item.kind === "anchor" ? `/${item.href}` : item.href;
 
         return (
-          <a
+          <Link
             key={item.href}
-            href={item.href}
+            href={href}
             aria-disabled={item.disabled}
             tabIndex={item.disabled ? -1 : undefined}
             className={LINK_CLASS}
           >
             {num}
             {label}
-          </a>
+          </Link>
         );
       })}
     </nav>

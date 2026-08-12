@@ -1,8 +1,9 @@
 /**
  * Nav entries in display order. Labels live in `Nav.items` in the message
  * files and are matched to these by index — keep the two in the same order.
- * `route` entries render through the locale-aware Link; `anchor` entries
- * stay plain in-page hashes.
+ * Both kinds render through the locale-aware Link: `route` entries use
+ * `href` as-is, `anchor` entries are rendered root-relative (`/#about`) so
+ * they resolve to the home page's sections from any route.
  */
 export interface NavItem {
   href: string;
