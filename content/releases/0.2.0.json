@@ -1,0 +1,51 @@
+{
+  "version": "0.2.0",
+  "releasedAt": "2026-08-12T12:00:00Z",
+  "title": {
+    "en": "Projects and releases",
+    "pt": "Projetos e versões",
+    "es": "Proyectos y versiones"
+  },
+  "changes": [
+    {
+      "type": "added",
+      "text": {
+        "en": "A projects screen listing open work as an editorial ledger",
+        "pt": "Tela de projetos listando trabalho aberto como um ledger editorial",
+        "es": "Pantalla de proyectos que lista el trabajo abierto como un ledger editorial"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "A project detail page with a release timeline and typed changes",
+        "pt": "Página de detalhe do projeto com timeline de versões e mudanças tipadas",
+        "es": "Página de detalle del proyecto con línea de tiempo de versiones y cambios tipados"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "An idempotent upload API, so any project can publish its own releases",
+        "pt": "API de upload idempotente, para qualquer projeto publicar suas próprias versões",
+        "es": "API de subida idempotente, para que cualquier proyecto publique sus propias versiones"
+      }
+    },
+    {
+      "type": "changed",
+      "text": {
+        "en": "Replaced free-form changelog entries with versioned releases",
+        "pt": "Entradas de changelog livres substituídas por versões estruturadas",
+        "es": "Entradas de changelog libres reemplazadas por versiones estructuradas"
+      }
+    },
+    {
+      "type": "fixed",
+      "text": {
+        "en": "Header navigation now works from every page, not just the home page",
+        "pt": "Navegação do header agora funciona em todas as páginas, não só na home",
+        "es": "La navegación del header ahora funciona en todas las páginas, no solo en el inicio"
+      }
+    }
+  ]
+}

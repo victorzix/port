@@ -1,0 +1,14 @@
+{
+  "slug": "portfolio",
+  "name": "Portfolio",
+  "description": {
+    "en": "This site. A public release history, fed by its own API.",
+    "pt": "Este site. Um histórico de versões público, alimentado pela própria API.",
+    "es": "Este sitio. Un historial de versiones público, alimentado por su propia API."
+  },
+  "stack": ["Next.js", "TypeScript", "PostgreSQL", "Docker"],
+  "status": "active",
+  "year": 2026,
+  "sortOrder": 0,
+  "repoUrl": "https://github.com/victorzix/port"
+}
