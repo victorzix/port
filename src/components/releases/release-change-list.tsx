@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { ChangeTypeGlyph } from "@/components/releases/change-type-glyph";
+import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
 import type { ReleaseChangeView } from "@/server/view-models/project";
 
 interface ReleaseChangeListProps {
@@ -21,7 +22,10 @@ export function ReleaseChangeList({ changes }: ReleaseChangeListProps) {
             {t(`type.${change.type}`)}
           </span>
           <span className="min-w-0 text-[14px] leading-[1.6] tracking-[-0.006em] text-pretty text-foreground sm:text-[15px]">
-            {change.text}
+            {change.text.text}
+            {change.text.isFallback && (
+              <LocalizedFallbackTag sourceLocale={change.text.sourceLocale} />
+            )}
           </span>
         </li>
       ))}

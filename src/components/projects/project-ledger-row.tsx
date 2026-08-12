@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 
+import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
 import { Reveal } from "@/components/motion/reveal";
 import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
 import { StackList } from "@/components/stack-list";
@@ -35,7 +36,10 @@ export function ProjectLedgerRow({ project, index = 0 }: ProjectLedgerRowProps) 
             </h2>
           </div>
           <p className="max-w-[74ch] text-[14px] leading-[1.6] tracking-[-0.006em] text-pretty text-muted-foreground sm:text-[15.5px]">
-            {project.description}
+            {project.description.text}
+            {project.description.isFallback && (
+              <LocalizedFallbackTag sourceLocale={project.description.sourceLocale} />
+            )}
           </p>
           <StackList items={project.stack} />
         </div>

@@ -1,5 +1,6 @@
 import { useFormatter } from "next-intl";
 
+import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
 import { MarkdownContent } from "@/components/markdown-content";
 import { Reveal } from "@/components/motion/reveal";
 import { ReleaseChangeList } from "@/components/releases/release-change-list";
@@ -37,7 +38,10 @@ export function ReleaseItem({ release, index = 0 }: ReleaseItemProps) {
 
       {release.title && (
         <h3 className="mt-2 text-lg leading-[1.15] font-semibold tracking-[-0.03em] text-balance text-foreground sm:text-xl">
-          {release.title}
+          {release.title.text}
+          {release.title.isFallback && (
+            <LocalizedFallbackTag sourceLocale={release.title.sourceLocale} />
+          )}
         </h3>
       )}
 
@@ -45,7 +49,10 @@ export function ReleaseItem({ release, index = 0 }: ReleaseItemProps) {
 
       {release.notes && (
         <div className="mt-4">
-          <MarkdownContent content={release.notes} />
+          <MarkdownContent content={release.notes.text} />
+          {release.notes.isFallback && (
+            <LocalizedFallbackTag sourceLocale={release.notes.sourceLocale} />
+          )}
         </div>
       )}
     </Reveal>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
+import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
 import { ProjectLinks } from "@/components/projects/project-links";
 import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
 import { ReleaseTimeline } from "@/components/releases/release-timeline";
@@ -29,10 +30,10 @@ export async function generateMetadata({
 
   return {
     title: project.name,
-    description: project.description,
+    description: project.description.text,
     openGraph: {
       title: project.name,
-      description: project.description,
+      description: project.description.text,
       ...(project.imageUrl ? { images: [{ url: project.imageUrl }] } : {}),
     },
   };
@@ -71,7 +72,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           </h1>
 
           <p className="max-w-[58ch] text-[14.5px] leading-[1.55] tracking-[-0.008em] text-pretty text-muted-foreground sm:text-[17px]">
-            {project.description}
+            {project.description.text}
+            {project.description.isFallback && (
+              <LocalizedFallbackTag sourceLocale={project.description.sourceLocale} />
+            )}
           </p>
 
           <StackList items={project.stack} />
@@ -81,7 +85,10 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
 
         {project.summary && (
           <div className="mt-8 max-w-[68ch] sm:mt-11">
-            <MarkdownContent content={project.summary} />
+            <MarkdownContent content={project.summary.text} />
+            {project.summary.isFallback && (
+              <LocalizedFallbackTag sourceLocale={project.summary.sourceLocale} />
+            )}
           </div>
         )}
 

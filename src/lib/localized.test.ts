@@ -1,18 +1,38 @@
 import { describe, expect, it } from "vitest";
 
-import { localizedSchema, pick } from "@/lib/localized";
+import { localizedSchema, resolve } from "@/lib/localized";
 
-describe("pick", () => {
-  it("returns the requested locale when present", () => {
-    expect(pick({ en: "Dark mode", pt: "Modo escuro" }, "pt")).toBe("Modo escuro");
+describe("resolve", () => {
+  it("returns the requested locale when present, not a fallback", () => {
+    expect(resolve({ en: "Dark mode", pt: "Modo escuro" }, "pt")).toEqual({
+      text: "Modo escuro",
+      sourceLocale: "pt",
+      isFallback: false,
+    });
   });
 
-  it("falls back to en when the locale is missing", () => {
-    expect(pick({ en: "Dark mode", pt: "Modo escuro" }, "es")).toBe("Dark mode");
+  it("falls back to en when the requested locale is missing", () => {
+    expect(resolve({ en: "Dark mode", pt: "Modo escuro" }, "es")).toEqual({
+      text: "Dark mode",
+      sourceLocale: "en",
+      isFallback: true,
+    });
   });
 
-  it("returns en when asked for en", () => {
-    expect(pick({ en: "Dark mode" }, "en")).toBe("Dark mode");
+  it("is not a fallback when asked for en and only en exists", () => {
+    expect(resolve({ en: "Dark mode" }, "en")).toEqual({
+      text: "Dark mode",
+      sourceLocale: "en",
+      isFallback: false,
+    });
+  });
+
+  it("is not a fallback when asked for pt and pt exists", () => {
+    expect(resolve({ en: "Dark mode", pt: "Modo escuro" }, "pt")).toEqual({
+      text: "Modo escuro",
+      sourceLocale: "pt",
+      isFallback: false,
+    });
   });
 });
 

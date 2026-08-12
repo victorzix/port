@@ -218,5 +218,8 @@
       "deprecated": "Deprecated",
       "security": "Security"
     }
+  },
+  "Localized": {
+    "notTranslated": "Not translated"
   }
 }

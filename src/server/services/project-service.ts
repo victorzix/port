@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { db } from "@/db";
 import { projects } from "@/db/schema";
 import type { Locale } from "@/i18n/locales";
-import { pick } from "@/lib/localized";
+import { resolve } from "@/lib/localized";
 import { compareProjects } from "@/lib/project-ordering";
 import type { UpsertProjectInput } from "@/lib/validations/project";
 import type {
@@ -32,7 +32,7 @@ export async function getProjectsForLocale(
     .map((row) => ({
       slug: row.slug,
       name: row.name,
-      description: pick(row.description, locale),
+      description: resolve(row.description, locale),
       stack: row.stack,
       status: row.status,
       year: row.year,
@@ -64,8 +64,8 @@ export async function getProjectBySlugForLocale(
   return {
     slug: row.slug,
     name: row.name,
-    description: pick(row.description, locale),
-    summary: row.summary ? pick(row.summary, locale) : null,
+    description: resolve(row.description, locale),
+    summary: row.summary ? resolve(row.summary, locale) : null,
     stack: row.stack,
     status: row.status,
     year: row.year,
@@ -76,12 +76,12 @@ export async function getProjectBySlugForLocale(
       id: release.id,
       version: release.version,
       releasedAt: release.releasedAt,
-      title: release.title ? pick(release.title, locale) : null,
-      notes: release.notes ? pick(release.notes, locale) : null,
+      title: release.title ? resolve(release.title, locale) : null,
+      notes: release.notes ? resolve(release.notes, locale) : null,
       changes: release.changes.map((change) => ({
         id: change.id,
         type: change.type,
-        text: pick(change.text, locale),
+        text: resolve(change.text, locale),
       })),
     })),
   };

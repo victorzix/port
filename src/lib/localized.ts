@@ -15,10 +15,22 @@ export const localizedSchema = z.object({
   es: z.string().min(1).optional(),
 });
 
+export interface Resolved {
+  text: string;
+  /** Locale the text actually came from — may differ from the one requested. */
+  sourceLocale: Locale;
+  /** True when the requested locale had no value and `en` was used instead. */
+  isFallback: boolean;
+}
+
 /**
- * Resolves stored content for one locale. The fallback is `en`, not the
- * site's DEFAULT_LOCALE ("pt") — `en` is the only locale guaranteed present.
+ * Resolves stored content for one locale, reporting whether a fallback was
+ * needed so the UI can mark untranslated text rather than passing it off as
+ * translated. The fallback is `en`, not the site's DEFAULT_LOCALE ("pt") —
+ * `en` is the only locale guaranteed present.
  */
-export function pick(value: Localized, locale: Locale): string {
-  return value[locale] ?? value.en;
+export function resolve(value: Localized, locale: Locale): Resolved {
+  const own = value[locale];
+  if (own) return { text: own, sourceLocale: locale, isFallback: false };
+  return { text: value.en, sourceLocale: "en", isFallback: true };
 }

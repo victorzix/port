@@ -1,9 +1,10 @@
 import type { ChangeType, ProjectStatus } from "@/lib/project-enums";
+import type { Resolved } from "@/lib/localized";
 
 export interface ProjectListItem {
   slug: string;
   name: string;
-  description: string;
+  description: Resolved;
   stack: string[];
   status: ProjectStatus;
   year: number;
@@ -14,23 +15,23 @@ export interface ProjectListItem {
 export interface ReleaseChangeView {
   id: string;
   type: ChangeType;
-  text: string;
+  text: Resolved;
 }
 
 export interface ReleaseView {
   id: string;
   version: string;
   releasedAt: Date;
-  title: string | null;
-  notes: string | null;
+  title: Resolved | null;
+  notes: Resolved | null;
   changes: ReleaseChangeView[];
 }
 
 export interface ProjectDetailView {
   slug: string;
   name: string;
-  description: string;
-  summary: string | null;
+  description: Resolved;
+  summary: Resolved | null;
   stack: string[];
   status: ProjectStatus;
   year: number;
