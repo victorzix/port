@@ -88,6 +88,30 @@ This is the only task that touches production. Its brief has the full procedure;
 
 You do not need to paste credentials into a chat. Put the tunnelled `DATABASE_URL` in `.env` (git-ignored) and the migration command can read it from there.
 
+## Work added after the final review, at the owner's request
+
+**Self-publishing content** (`4c64ed0`). The portfolio publishes its own release history from files in the repo, so the text is versioned and reviewed like any other change:
+
+```
+content/project.json        the project record, all three locales
+content/releases/0.2.0.json this branch's release
+scripts/publish-releases.mjs
+npm run release:publish     (--dry-run prints without sending)
+```
+
+The script uses Node's native `fetch`, so it adds no dependency and could run inside the container. Verified against the local database: first run `201/201`, subsequent runs `200/200` — idempotent, so it is safe to run on every deploy or by hand to correct a typo.
+
+**How to wire it to deploys.** Releases are rows in Postgres, so they survive redeploys — you only need to publish when there is a new version. Two options:
+
+- **Coolify post-deployment command** running `npm run release:publish`. This only works if that hook executes *inside the container*, which the current Dockerfile is not set up for — the runner stage copies only `public`, `.next/standalone` and `.next/static`, so neither the script nor `content/` is present. Two `COPY` lines would fix that, and from inside the container the script can target `http://127.0.0.1:3000`, needing no public domain and no duplicated secret. **Confirm where that hook runs before relying on it.**
+- **GitHub Actions** on `release: published`, where the repo is genuinely checked out. Needs the public domain and two secrets.
+
+**Do not put migrations in the Dockerfile.** This was considered and rejected: the build stage has no network access to Postgres, `drizzle-kit` is a devDependency absent from the runner image along with `src/db/migrations/`, and boot-time migration means replicas racing each other and a failed migration keeping the site down. `db:generate` there is worse still — it emits SQL that must be committed and reviewed, not produced in an ephemeral filesystem.
+
+**Untranslated content is now marked** (`2028427`, `4945697`). `pick()` became `resolve()`, returning `{ text, sourceLocale, isFallback }`, and the view models carry that provenance. Where a field falls back to `en`, a small mono tag names the language, with a screen-reader-only expansion so the meaning survives on touch devices and in assistive technology. The English text is still shown — it carries the information, which "not available" would destroy.
+
+Note the tension this creates with `CHANGELOG-API.md`, which tells other projects that writing only `en` is fine. That advice still holds: the reader gets the information plus an honest signal about its language.
+
 ## Decisions made during execution — do not re-litigate
 
 1. **`StackList` extracted** (pre-flight ruling). The plan had Tasks 10 and 11 each writing the stack-glyph markup inline, duplicating a block already in `role-item.tsx`. Ruled: extract `src/components/stack-list.tsx`, copying the markup verbatim so the experience timeline stays pixel-identical, and have all three consumers use it.
