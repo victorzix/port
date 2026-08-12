@@ -105,6 +105,26 @@ async function loadContent() {
   return { slug, project, releases };
 }
 
+/**
+ * Waits for the server to accept connections. A post-deployment hook can fire
+ * before the process is listening, which would otherwise fail the whole run on
+ * a transient connection error. Any HTTP response counts as up — we only care
+ * that something is answering.
+ */
+async function waitForServer(baseUrl, attempts = 10, delayMs = 1500) {
+  for (let attempt = 1; attempt <= attempts; attempt += 1) {
+    try {
+      await fetch(baseUrl, { method: "GET" });
+      return true;
+    } catch {
+      if (attempt === attempts) return false;
+      if (attempt === 1) console.log(`  waiting for ${baseUrl} to accept connections…`);
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+    }
+  }
+  return false;
+}
+
 async function put(baseUrl, token, endpoint, body, label) {
   if (DRY_RUN) {
     console.log(`  DRY-RUN  PUT ${endpoint}`);
@@ -147,6 +167,11 @@ console.log(
 );
 
 let failed = 0;
+
+if (!DRY_RUN && !(await waitForServer(baseUrl))) {
+  console.error(`\nCould not reach ${baseUrl}. Is the app running?`);
+  process.exit(1);
+}
 
 if (!(await put(baseUrl, token, `/api/projects/${slug}`, project, `project ${slug}`))) {
   console.error("\nAborting: the project record must land before its releases.");

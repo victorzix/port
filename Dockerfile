@@ -32,6 +32,14 @@ RUN mkdir .next && chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Release content and its publish script, so a post-deployment hook can push
+# this project's own release history to the running app. Not used at build or
+# boot — invoke it explicitly:
+#   PORTFOLIO_API_URL=http://127.0.0.1:3000 node scripts/publish-releases.mjs
+# Note `npm run` is unavailable here: the standalone package.json carries no scripts.
+COPY --from=builder --chown=nextjs:nodejs /app/content ./content
+COPY --from=builder --chown=nextjs:nodejs /app/scripts ./scripts
+
 USER nextjs
 
 EXPOSE 3000
