@@ -46,9 +46,34 @@ Current state of the branch:
 | 10 · projects ledger screen | complete, clean after 1 fix round | `70080ac..71faf2b` |
 | 11 · project detail + release timeline | complete, review clean | `71faf2b..b630b96` |
 | final review fix wave | complete, re-reviewed clean | `f90f511..fbe6a65` |
-| **12 · database reconcile + end-to-end verify** | **not started — needs the human** | — |
+| 12 · database reconcile + end-to-end verify | **done against a local Postgres. Production migration deliberately deferred** — see below | — |
 
-## Task 12: what it does and what it needs from you
+## Task 12 as actually executed — local, not production
+
+The owner chose to verify against a **local Postgres 18** rather than tunnelling into Coolify, and to migrate production separately at deploy time. That is a smaller, cleaner path and it exercised everything the checklist covers.
+
+What was done and confirmed on 2026-08-12:
+
+- Local database `portf-local` created (it did not exist yet), migration applied cleanly. The database was empty, so this was Case A — nothing to reconcile.
+- Schema verified against the spec: three tables, the four index names exactly as specified, both foreign keys `ON DELETE CASCADE`, `projects.stack` as `text[] NOT NULL DEFAULT '{}'`, no `changelog_entries`.
+- **API checklist: 14 of 14 passed** — 401 without a token and with a wrong token, 400 for malformed JSON / incomplete body / bad slug / bad version, 201 create, 200 idempotent re-send, 404 for an unknown project without an inline `project`, and 201 for inline project creation.
+- **Database-level verification of what status codes cannot prove:** re-sending release `1.4.0` with one change left exactly one row, not three — the replacement converges. `versionKey` ordering puts `1.10.0` above `1.9.0`. Localized content stored as `{"en":…,"pt":…}` with `es` absent, so the fallback path is real.
+- **Both screens verified with real data**, which is where two fix-wave fixes proved out end to end: release dates render as `12 de agosto de 2026` rather than a raw `Date.toString()`, and the header's hrefs resolve to `/#about` from `/projects/portfolio` and to `/es#about` from `/es/projects/portfolio` — so the nav genuinely works off the home page in every locale. On the `/es` page, labels are Spanish while a change whose payload carried only `en` renders its English text: the fallback behaving as designed.
+- Smoke-test rows deleted; cascades removed their releases and changes; `/projects` renders its empty state again.
+
+### Two corrections made to `.env` along the way
+
+- `?schema=public` was removed from `DATABASE_URL`. It is a Prisma convention; `postgres-js` forwards it as a session parameter and Postgres rejects it with `FATAL: unrecognized configuration parameter "schema"`. It would have broken the app, not just tooling. **Do not put it back, and do not include it in the production URL.**
+- `CHANGELOG_API_TOKEN` was empty; a 64-hex-character local token was generated. Production needs its own separate value.
+
+### What production still needs
+
+1. **Set the app service's env vars in Coolify:** `DATABASE_URL` using the **internal** Docker URL (`postgres://postgres:…@dkj7jjl60gnb18jzuythkthl:5432/postgres`, no `?schema=public`) and `CHANGELOG_API_TOKEN`. Without `DATABASE_URL`, `src/db/index.ts` throws at module load and `/projects` returns 500.
+2. **Apply the migration to the production database.** The `CLAUDE.md` rule stands: never inside the Docker image, never at container boot. Either tunnel and run `npm run db:migrate` with the tunnelled URL, or run it from anywhere with network access to that Postgres.
+3. **Decide the merge order.** This branch adds `Projetos` to the primary nav in all three locales, so merging before production has a database means a visible link to a page that 500s. Either configure the database first, or ship with `disabled: true` on the projects entry in `src/components/site-header/nav-items.ts` and flip it when the database is up.
+4. **Fill in the production domain** in `CHANGELOG-API.md` where `PORTFOLIO_API_URL` is described, drop its "Not live yet" banner, and correct its field table — it marks `changes` as required when the schema defaults it to `[]`.
+
+## Task 12's original procedure, for the production run
 
 This is the only task that touches production. Its brief has the full procedure; the shape of it:
 
