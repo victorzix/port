@@ -27,11 +27,11 @@
 | 4 · schema + initial migration | complete, review clean | `05c6b48..c0d87bb` |
 | 5 · zod validation schemas | complete, review clean | `c0d87bb..3fd34ca` |
 | 6 · services (view models + upserts) | complete, review clean — but see "Degraded review gate" below | `41dce6c..67bca94` |
-| 7 · API routes (two PUTs) | not started | — |
-| 8 · message keys ×3 locales | not started | — |
-| 9 · `StackList` + nav config | not started | — |
-| 10 · projects ledger screen | not started | — |
-| 11 · project detail + release timeline | not started | — |
+| 7 · API routes (two PUTs) | complete, review clean | `67bca94..2e3b6de` |
+| 8 · message keys ×3 locales | complete, review clean | `2e3b6de..d317c51` |
+| 9 · `StackList` + nav config | complete, review clean — haiku gate, see below | `d317c51..70080ac` |
+| 10 · projects ledger screen | complete, review clean after 1 fix round | `70080ac..71faf2b` |
+| 11 · project detail + release timeline | complete, review clean | `71faf2b..b630b96` |
 | 12 · database reconcile + end-to-end verify | not started, **needs the human** | — |
 
 Two plan-maintenance commits also exist on the branch: `05c6b48` (aligns the plan's Task 3 test data with the ruling below) and one before it fixing stale `StackIcon` references.
