@@ -26,7 +26,7 @@
 | 3 · `project-ordering.ts` | complete, review clean after 1 fix round | `8da994f..def3f19` |
 | 4 · schema + initial migration | complete, review clean | `05c6b48..c0d87bb` |
 | 5 · zod validation schemas | complete, review clean | `c0d87bb..3fd34ca` |
-| 6 · services (view models + upserts) | not started | — |
+| 6 · services (view models + upserts) | complete, review clean — but see "Degraded review gate" below | `41dce6c..67bca94` |
 | 7 · API routes (two PUTs) | not started | — |
 | 8 · message keys ×3 locales | not started | — |
 | 9 · `StackList` + nav config | not started | — |
@@ -41,6 +41,22 @@ Two plan-maintenance commits also exist on the branch: `05c6b48` (aligns the pla
 1. **`StackList` extracted (pre-flight ruling).** The plan originally had Tasks 10 and 11 each write the stack-glyph markup inline, duplicating a block that already existed in `role-item.tsx`. Ruled: extract `src/components/stack-list.tsx` in Task 9, copying the markup verbatim from `role-item.tsx` so the experience timeline stays pixel-identical, and have all three consumers use it. The plan has been amended accordingly.
 
 2. **Task 3's null-release test data (fix-round ruling).** The plan's test used names `"A"` / `"B"`, so alphabetical ordering produced the same result as the rule under test — it would have passed even with the null-sinking rule broken. Ruled: fix. Now uses `released = "Zebra"` / `unreleased = "Alpha"`, and the implementer proved it discriminates by removing the release-date comparison, watching the test fail, and restoring. The plan text was amended to match.
+
+## Degraded review gate — Task 6 needs a second look
+
+The Anthropic API was returning sustained 529 overload errors while Task 6 ran. Four dispatches died: two implementer attempts and two reviewer attempts, all on the stronger model. Both roles ultimately ran on a lighter model instead. That was a capacity decision, not a judgement that the task was simple.
+
+Task 6 is the largest and most consequential task in the plan — the transaction boundaries and the `?? null` full-replacement semantics live there. **The final whole-branch review must re-examine `src/server/services/project-service.ts`, `src/server/services/release-service.ts` and `src/server/view-models/project.ts` from scratch rather than trusting the task gate.**
+
+What was independently verified despite the degradation, by two separate paths (the reviewer's line-by-line enumeration and a mechanical grep by the controller), both agreeing:
+
+- Exactly one `db.` call exists in `release-service.ts` — the `db.transaction(...)` opener. All seven database calls inside the callback use the `tx` handle, so atomicity holds.
+- Six `?? null` in each service, which is the expected count.
+- Six `pick(...)` calls in `project-service.ts` — every JSONB content field is resolved before leaving the service.
+- `position` is assigned from the payload array index.
+- Releases order by `versionKey` descending; changes by `position` ascending; the relation is queried as `changes`.
+
+The reviewer reported zero findings at any severity. Treat that as encouraging but not conclusive.
 
 ## Known broken state (expected, not a bug)
 
