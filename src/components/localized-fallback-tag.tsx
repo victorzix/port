@@ -20,6 +20,7 @@ export function LocalizedFallbackTag({ sourceLocale }: LocalizedFallbackTagProps
       className="ml-1.5 align-super font-mono text-[9px] tracking-[0.08em] text-muted-foreground uppercase no-underline"
     >
       {sourceLocale}
+      <span className="sr-only"> — {t("notTranslated")}</span>
     </abbr>
   );
 }
