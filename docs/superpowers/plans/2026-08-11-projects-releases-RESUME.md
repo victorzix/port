@@ -4,18 +4,31 @@
 
 **Plan:** `docs/superpowers/plans/2026-08-11-projects-releases.md`
 **Spec:** `docs/superpowers/specs/2026-08-11-projects-releases-design.md`
-**Branch:** `feat/projects-releases` (branched from `main` at `3ca9dac`)
-**Last updated:** 2026-08-11, after Task 5 completed and passed review
+**Branch:** `feat/projects-releases`, branched from `main` at `3ca9dac`, pushed to `origin`
+**Last updated:** 2026-08-11, after the final whole-branch review and its fix wave
+
+## Where this stands
+
+**All 11 code tasks are complete, individually reviewed, and the whole branch has passed a final review plus one fix wave.** `main` is untouched.
+
+**Only Task 12 remains, and it needs a human.** It applies the migration through an SSH tunnel and verifies the API against a real database. Nothing before it has touched any database.
+
+Current state of the branch:
+
+- `npx tsc --noEmit` — clean
+- `npm run lint` — clean
+- `npm test` — 41 passing across 5 files
+- Message key parity exact across `en` / `pt` / `es`
+- No `Co-Authored-By` or Claude/Anthropic trailer in any of the 21 commits, single author
 
 ## How to resume
 
-1. `git switch feat/projects-releases` and confirm `git log --oneline` matches the completed-task SHAs below.
-2. `npm install` (the branch added `vitest` as a devDependency).
-3. `npm test` — expect **41 passing** across 5 files. If that number differs, something is out of sync; trust `git log` over this file.
-4. `npx tsc --noEmit` is **expected to be dirty** at this point. See "Known broken state" below.
-5. Regenerate the task briefs (they are also git-ignored): for each remaining task N, run
-   `bash ~/.claude/skills/subagent-driven-development/scripts/task-brief docs/superpowers/plans/2026-08-11-projects-releases.md N`
-6. Resume at **Task 6**, or at Task 5's review if the table below still shows it unverified.
+1. `git fetch && git switch feat/projects-releases`
+2. `npm install` — the branch added `vitest` as a devDependency
+3. `npm test` — expect **41 passing**. A different number means something is out of sync; trust `git log` over this file.
+4. Regenerate the Task 12 brief, which is git-ignored:
+   `bash ~/.claude/skills/subagent-driven-development/scripts/task-brief docs/superpowers/plans/2026-08-11-projects-releases.md 12`
+5. Execute Task 12 (see below).
 
 ## Task status
 
@@ -23,71 +36,69 @@
 | --- | --- | --- |
 | 1 · vitest harness, `localized.ts`, `project-enums.ts` | complete, review clean | `9b8b5cf..040b780` |
 | 2 · `version-key.ts` | complete, review clean | `040b780..8da994f` |
-| 3 · `project-ordering.ts` | complete, review clean after 1 fix round | `8da994f..def3f19` |
+| 3 · `project-ordering.ts` | complete, clean after 1 fix round | `8da994f..def3f19` |
 | 4 · schema + initial migration | complete, review clean | `05c6b48..c0d87bb` |
 | 5 · zod validation schemas | complete, review clean | `c0d87bb..3fd34ca` |
-| 6 · services (view models + upserts) | complete, review clean — but see "Degraded review gate" below | `41dce6c..67bca94` |
+| 6 · services (view models + upserts) | complete — degraded gate, re-examined and cleared by the final review | `41dce6c..67bca94` |
 | 7 · API routes (two PUTs) | complete, review clean | `67bca94..2e3b6de` |
 | 8 · message keys ×3 locales | complete, review clean | `2e3b6de..d317c51` |
-| 9 · `StackList` + nav config | complete, review clean — haiku gate, see below | `d317c51..70080ac` |
-| 10 · projects ledger screen | complete, review clean after 1 fix round | `70080ac..71faf2b` |
+| 9 · `StackList` + nav config | complete — degraded gate, and the final review found a real defect here (see below) | `d317c51..70080ac` |
+| 10 · projects ledger screen | complete, clean after 1 fix round | `70080ac..71faf2b` |
 | 11 · project detail + release timeline | complete, review clean | `71faf2b..b630b96` |
-| 12 · database reconcile + end-to-end verify | not started, **needs the human** | — |
+| final review fix wave | complete, re-reviewed clean | `f90f511..fbe6a65` |
+| **12 · database reconcile + end-to-end verify** | **not started — needs the human** | — |
 
-Two plan-maintenance commits also exist on the branch: `05c6b48` (aligns the plan's Task 3 test data with the ruling below) and one before it fixing stale `StackIcon` references.
+## Task 12: what it does and what it needs from you
+
+This is the only task that touches production. Its brief has the full procedure; the shape of it:
+
+1. **Open an SSH tunnel** to the Coolify host: `ssh -L 5433:<postgres-internal-host>:5432 <user>@<coolify-host>`. Leave it open in its own terminal.
+2. **Inspect the remote database before writing anything.** `src/db/migrations/` did not exist before this branch, so there is no Drizzle journal — whatever tables exist were created by some other means. The task lists the tables and row counts first.
+3. **Branch on what it finds.** Clean database → apply. Pre-existing `projects` / `changelog_entries` with **zero rows** → drop them, then apply, because the generated `0000` baseline issues `CREATE TABLE` and would collide. **Either table holding rows → STOP and ask**, because the spec's "these tables are empty" assumption would be proven false.
+4. **Apply the migration:** `DATABASE_URL="postgres://…@localhost:5433/<db>" npm run db:migrate`.
+5. **Smoke-test the API** with an 11-command curl checklist covering 401, 400 (bad body), 201 create, 200 idempotent re-send, 404 unknown slug, 400 bad version, change-list replacement, semver ordering, and inline project creation.
+6. **Verify both screens against real data** at three widths in both themes — the first time they are seen without a stub.
+7. **Delete the smoke-test rows** so the site launches with the real empty state.
+8. **Fill in the production domain** in `CHANGELOG-API.md`, where `PORTFOLIO_API_URL` is described.
+
+You do not need to paste credentials into a chat. Put the tunnelled `DATABASE_URL` in `.env` (git-ignored) and the migration command can read it from there.
 
 ## Decisions made during execution — do not re-litigate
 
-1. **`StackList` extracted (pre-flight ruling).** The plan originally had Tasks 10 and 11 each write the stack-glyph markup inline, duplicating a block that already existed in `role-item.tsx`. Ruled: extract `src/components/stack-list.tsx` in Task 9, copying the markup verbatim from `role-item.tsx` so the experience timeline stays pixel-identical, and have all three consumers use it. The plan has been amended accordingly.
+1. **`StackList` extracted** (pre-flight ruling). The plan had Tasks 10 and 11 each writing the stack-glyph markup inline, duplicating a block already in `role-item.tsx`. Ruled: extract `src/components/stack-list.tsx`, copying the markup verbatim so the experience timeline stays pixel-identical, and have all three consumers use it.
+2. **Task 3's null-release test data** (fix-round ruling). The plan's test used names `"A"` / `"B"`, so alphabetical ordering produced the same result as the rule under test — it would have passed with the null-sinking rule broken. Now `"Zebra"` / `"Alpha"`, and the implementer proved it discriminates by removing the release-date comparison, watching the test fail, and restoring.
+3. **The empty state carries a mono eyebrow** (Task 10 fix-round ruling). `projects-empty.tsx` originally had no `font-mono` element at all, unlike every populated row. Added `ProjectsPage.empty.meta` — `Soon` / `Em breve` / `Pronto`.
+4. **`timeZone: "America/Sao_Paulo"`** (final-review ruling). Release dates read as the date the owner published, in their own zone, rather than UTC.
 
-2. **Task 3's null-release test data (fix-round ruling).** The plan's test used names `"A"` / `"B"`, so alphabetical ordering produced the same result as the rule under test — it would have passed even with the null-sinking rule broken. Ruled: fix. Now uses `released = "Zebra"` / `unreleased = "Alpha"`, and the implementer proved it discriminates by removing the release-date comparison, watching the test fail, and restoring. The plan text was amended to match.
+## What the final whole-branch review found
 
-## Degraded review gate — Task 6 needs a second look
+Verdict was **needs fixes before merge**: zero Critical, three Important, and all 13 deferred minors triaged as fine to leave. All three Important findings are now fixed in `fbe6a65` and re-reviewed clean.
 
-The Anthropic API was returning sustained 529 overload errors while Task 6 ran. Four dispatches died: two implementer attempts and two reviewer attempts, all on the stronger model. Both roles ultimately ran on a lighter model instead. That was a capacity decision, not a judgement that the task was simple.
+Two of the three were defects in this project's own spec and plan, which the code implemented faithfully:
 
-Task 6 is the largest and most consequential task in the plan — the transaction boundaries and the `?? null` full-replacement semantics live there. **The final whole-branch review must re-examine `src/server/services/project-service.ts`, `src/server/services/release-service.ts` and `src/server/view-models/project.ts` from scratch rather than trusting the task gate.**
+1. **The header was a navigational dead end on the new pages.** `#about`, `#experience` and the brand mark's `#top` are home-page section ids, and this branch is the first thing to render `SiteHeader` off the home page — so from `/projects` every header link was dead with no route back home, and on mobile the sheet closed on tap and looked broken. The spec enumerated the three things that break when a fourth nav label is appended and never considered that the existing three break when the nav starts appearing elsewhere. Fixed by routing anchor entries and the brand mark through the locale-aware `Link` with root-relative hrefs; the home page's smooth scroll was verified unaffected.
+2. **Every release date rendered as a raw `Date.toString()`.** The plan prescribed `format.dateTime(x, "long")` but never defined a `formats` block, and next-intl ships no default named formats. It only shipped green because `/projects` launches empty. Fixed in `src/i18n/request.ts`. There is exactly one named-format usage in the codebase, so the fix is complete in scope.
+3. **A malformed JSON body returned 500 instead of 400**, contradicting `CHANGELOG-API.md` — which tells calling agents that 500 is retryable, so an agent would have retried forever on a payload that could never succeed. Fixed with a try/catch around `request.json()` in both routes, with the auth check still running first.
 
-What was independently verified despite the degradation, by two separate paths (the reviewer's line-by-line enumeration and a mechanical grep by the controller), both agreeing:
+On the two degraded gates: **Task 6 held up** under independent re-examination — atomicity, the `created` flag under a race, and the query shapes are all sound. **Task 9 was where the miss happened**, but the finding is invisible from inside its own files: seeing it requires knowing that `SiteHeader` now renders off-home, which Tasks 10 and 11 only established afterwards. That is a task-decomposition blind spot as much as a model-capability one.
 
-- Exactly one `db.` call exists in `release-service.ts` — the `db.transaction(...)` opener. All seven database calls inside the callback use the `tx` handle, so atomicity holds.
-- Six `?? null` in each service, which is the expected count.
-- Six `pick(...)` calls in `project-service.ts` — every JSONB content field is resolved before leaving the service.
-- `position` is assigned from the payload array index.
-- Releases order by `versionKey` descending; changes by `position` ascending; the relation is queried as `changes`.
+## Deferred minor findings — all triaged as fine to leave
 
-The reviewer reported zero findings at any severity. Treat that as encouraging but not conclusive.
+Kept for the record. None block merge; the final review gave each an individual verdict.
 
-## Known broken state (expected, not a bug)
+- Ledger ordering uses the date of the **highest version** rather than the most recent release date (`project-service.ts:29`). Diverges only on a backport, and only between projects sharing `sortOrder` and `status`.
+- Concurrent first-write to the same slug can yield a spurious retryable 500 (read-then-write at READ COMMITTED). Never corruption, and `CHANGELOG-API.md` already tells callers 500 is safe to retry.
+- Omitting `releasedAt` on an update re-stamps the release to `now()` — the one field where full replacement is not convergent. Worth a line in `CHANGELOG-API.md`.
+- `z.url()` accepts `javascript:` and `data:` URLs. Exploitable only by the bearer-token holder, so hardening rather than a hole. `z.url({ protocol: /^https?$/ })` would close it.
+- `z.iso.datetime()` rejects offset timestamps (`…-03:00`) and date-only strings, both valid ISO 8601. GitHub always sends `Z`, so phase 2 is safe.
+- `ProjectsPage.latestVersion` is defined in all three locales but unread — either drop it or spend it as an `sr-only` label, since the version currently reaches a screen reader as a bare "v1.4.0".
+- Duplicate `stack` entries would produce a React duplicate-key warning; best fixed in the schema with a dedupe transform.
+- Nav labels are matched to `NAV_ITEMS` by index with no length guard.
+- The detail query is unbounded — fine at tens of releases.
+- The detail page calls `getProjectBySlugForLocale` twice per request (`generateMetadata` plus the component); Drizzle is not `fetch`-based so Next does not memoize it. React `cache()` is a three-line fix if wanted.
+- `CHANGELOG-API.md` still carries its "Not live yet" banner and marks `changes` as required when the schema defaults it to `[]`. Both should be corrected in Task 12's final step.
+- Several JSDoc gaps on self-explanatory exports, and two cosmetic Tailwind divergences from `role-item.tsx` (the release-count label's tracking and case; the dot separator).
 
-`npx tsc --noEmit` currently reports ~13 errors. Every one is in a file that a later task rewrites or deletes. Do not fix them ad hoc — that would collide with the task that owns them:
+## The database has still not been touched
 
-| File | Owner |
-| --- | --- |
-| `src/server/services/changelog-service.ts` | Task 6 deletes |
-| `src/server/services/project-service.ts` | Task 6 rewrites |
-| `src/app/api/changelog/route.ts` | Task 7 deletes |
-| `src/app/api/projects/route.ts` | Task 7 deletes |
-| `src/components/projects/project-card.tsx`, `project-list.tsx` | Task 10 deletes |
-| `src/app/[locale]/projects/[slug]/page.tsx` | Task 11 rewrites |
-| `src/components/changelog/*` | Task 11 deletes |
-
-## Deferred minor findings
-
-Carried forward for the final whole-branch review to triage. None block progress.
-
-- Task 1: `PROJECT_STATUSES` lacks JSDoc while `CHANGE_TYPES` has one — `src/lib/project-enums.ts:1`
-- Task 2: `isValidVersion` and `InvalidVersionError` lack JSDoc while siblings have it — `src/lib/version-key.ts:4,13`
-- Task 2: `versionAnchor` is untested against malformed input. In practice its input comes from database rows already validated by `toVersionKey` at write time, so the path is unreachable through the API.
-- Task 4: no JSDoc on `projects.status` or `release_changes.type`, unlike sibling columns.
-- Task 5: two tests assert only `.success === true` without checking the parsed value (`versionParamSchema` "accepts dot-separated integers", `projectSlugSchema` "accepts kebab-case"). Each is paired with strong negative cases in the same block.
-- Task 5: long single-line `.refine(...)` at `src/lib/validations/release.ts:236` — stylistic, lint is clean.
-- Plan bookkeeping: the plan's Task 5 text predicts "34 tests across four files"; the real total is 41 across five (7 + 11 + 5 + 8 + 10). Arithmetic slip in the plan, harmless.
-
-## The database has not been touched
-
-This is the most important thing to know. `src/db/migrations/0000_mute_shatterstar.sql` was **generated but never applied to any database**. Nothing in Tasks 1–11 runs a migration, by design.
-
-Task 12 is the only task that touches production, and it needs values only the human has: the Coolify host, the Postgres internal host, and credentials for the SSH tunnel. It also begins by *inspecting* the remote database rather than assuming: if the pre-existing `projects` or `changelog_entries` tables contain rows, the plan says stop and ask rather than dropping anything, because the spec's "these tables are empty" assumption would have been proven false.
-
-Do not run `npm run db:migrate` outside Task 12's procedure.
+`src/db/migrations/0000_mute_shatterstar.sql` was generated but **never applied anywhere**. Do not run `npm run db:migrate` outside Task 12's procedure.
