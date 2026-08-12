@@ -189,6 +189,7 @@
     "title": "Things I build and keep in the open.",
     "lead": "Personal and open work, each with its own release history. Client and employer systems live in Experience.",
     "empty": {
+      "meta": "Soon",
       "title": "Nothing published yet.",
       "body": "The first open projects land here with their full release history."
     },

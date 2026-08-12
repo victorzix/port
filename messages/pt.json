@@ -189,6 +189,7 @@
     "title": "Coisas que eu construo e mantenho no aberto.",
     "lead": "Trabalho pessoal e aberto, cada um com seu histórico de versões. Sistemas de clientes e empresas ficam em Experiência.",
     "empty": {
+      "meta": "Em breve",
       "title": "Nada publicado ainda.",
       "body": "Os primeiros projetos abertos aparecem aqui com o histórico completo de versões."
     },
