@@ -1,6 +1,6 @@
-import { StackIcon } from "@/components/experience/stack-icon";
 import { NumberTicker } from "@/components/motion/number-ticker";
 import { Reveal } from "@/components/motion/reveal";
+import { StackList } from "@/components/stack-list";
 import { cn } from "@/lib/utils";
 
 interface Deliverable {
@@ -66,17 +66,7 @@ export function RoleItem({ role, index = 0 }: RoleItemProps) {
         <p className="max-w-[74ch] text-[14px] leading-[1.6] tracking-[-0.006em] text-pretty text-muted-foreground sm:text-[15.5px]">
           {role.desc}
         </p>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          {role.stack.map((item) => (
-            <span
-              key={item}
-              className="inline-flex items-center gap-[7px] font-mono text-[11.5px] tracking-[0.01em] text-foreground"
-            >
-              <StackIcon name={item} />
-              {item}
-            </span>
-          ))}
-        </div>
+        <StackList items={role.stack} />
         {hasMetric && (
           <div className="flex flex-wrap items-baseline gap-2.5 sm:hidden">
             <NumberTicker

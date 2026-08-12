@@ -1,6 +1,6 @@
 import { useFormatter, useTranslations } from "next-intl";
 
-import { MarkdownContent } from "@/components/changelog/markdown-content";
+import { MarkdownContent } from "@/components/markdown-content";
 import type { ChangelogEntry } from "@/db/schema";
 
 interface ChangelogEntryItemProps {
