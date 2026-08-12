@@ -5,7 +5,13 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+# node:22-alpine ships npm 10, which computes a different dependency tree than
+# the npm 11 that writes package-lock.json on the dev machine — so `npm ci`
+# rejects a perfectly valid lock with "Missing: <pkg> from lock file". Pin the
+# major that produced the lock. This build has failed this way three times;
+# regenerating the lock only fixes it until the next dependency is added.
+# If you upgrade npm locally to a new major, bump this to match.
+RUN npm i -g npm@11 && npm ci
 
 # ---- Build ----
 FROM base AS builder
