@@ -7,7 +7,7 @@
     "label": "Idioma"
   },
   "Nav": {
-    "items": ["Sobre", "Experiência", "Contato"],
+    "items": ["Sobre", "Experiência", "Projetos", "Contato"],
     "themeToDark": "Ativar modo escuro",
     "themeToLight": "Ativar modo claro"
   },
@@ -184,18 +184,42 @@
     "updated": "Atualizado em ago 2026"
   },
   "ProjectsPage": {
-    "title": "Projetos",
-    "description": "Uma coleção de coisas que eu construí.",
-    "empty": "Ainda não há projetos — volte em breve."
+    "num": "03",
+    "label": "Projetos",
+    "title": "Coisas que eu construo e mantenho no aberto.",
+    "lead": "Trabalho pessoal e aberto, cada um com seu histórico de versões. Sistemas de clientes e empresas ficam em Experiência.",
+    "empty": {
+      "meta": "Em breve",
+      "title": "Nada publicado ainda.",
+      "body": "Os primeiros projetos abertos aparecem aqui com o histórico completo de versões."
+    },
+    "status": {
+      "active": "Ativo",
+      "wip": "Em andamento",
+      "archived": "Arquivado"
+    },
+    "releaseCount": "{count, plural, =0 {sem versões} one {# versão} other {# versões}}",
+    "latestVersion": "Última"
   },
   "ProjectDetail": {
-    "backToProjects": "Voltar para projetos",
-    "changelogHeading": "Changelog",
-    "changelogEmpty": "Ainda não há atualizações.",
-    "repoLink": "Ver código-fonte",
-    "liveLink": "Ver ao vivo"
+    "back": "Todos os projetos",
+    "startedIn": "Começou em {year}",
+    "releasesHeading": "Versões",
+    "releasesEmpty": "Nenhuma versão publicada ainda.",
+    "repoLink": "Código",
+    "liveLink": "No ar"
   },
-  "ChangelogEntry": {
-    "publishedOn": "Publicado em {date}"
+  "ReleaseChange": {
+    "type": {
+      "added": "Adicionado",
+      "changed": "Alterado",
+      "fixed": "Corrigido",
+      "removed": "Removido",
+      "deprecated": "Descontinuado",
+      "security": "Segurança"
+    }
+  },
+  "Localized": {
+    "notTranslated": "Não traduzido"
   }
 }
