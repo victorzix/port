@@ -21,11 +21,16 @@ export function ReleaseChangeList({ changes }: ReleaseChangeListProps) {
         const isPhone =
           change.image?.frame === "iphone" || change.image?.frame === "android";
         return (
-          <li key={change.id} className="flex items-baseline gap-2.5">
-            <ChangeTypeGlyph type={change.type} />
-            <span className="font-mono text-[9.5px] tracking-[0.1em] text-muted-foreground uppercase sm:w-24 sm:shrink-0">
-              {t(`type.${change.type}`)}
-            </span>
+          <li
+            key={change.id}
+            className="flex flex-col gap-1.5 sm:flex-row sm:items-baseline sm:gap-2.5"
+          >
+            <div className="flex items-center gap-2 sm:contents">
+              <ChangeTypeGlyph type={change.type} />
+              <span className="font-mono text-[9.5px] tracking-[0.1em] text-muted-foreground uppercase sm:w-24 sm:shrink-0">
+                {t(`type.${change.type}`)}
+              </span>
+            </div>
             <div className="flex min-w-0 flex-col gap-3">
               <span className="text-[14px] leading-[1.6] tracking-[-0.006em] text-pretty text-foreground sm:text-[15px]">
                 {change.text.text}
