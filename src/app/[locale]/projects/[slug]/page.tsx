@@ -12,6 +12,7 @@ import { MarkdownContent } from "@/components/markdown-content";
 import { StackList } from "@/components/stack-list";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/locales";
+import { groupReleases } from "@/lib/release-grouping";
 import { getProjectBySlugForLocale } from "@/server/services/project-service";
 
 export const dynamic = "force-dynamic";
@@ -46,6 +47,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
   if (!project) notFound();
 
   const t = await getTranslations("ProjectDetail");
+
+  const releaseGroups = groupReleases(project.releases);
 
   return (
     <div className="min-h-screen bg-background">
@@ -96,7 +99,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <span className="font-mono text-[9.5px] tracking-[0.14em] text-muted-foreground uppercase">
             {t("releasesHeading")}
           </span>
-          <ReleaseTimeline releases={project.releases} />
+          <ReleaseTimeline groups={releaseGroups} />
         </section>
 
         <SiteFooter />
