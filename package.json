@@ -12,7 +12,8 @@
     "release:publish": "node scripts/publish-releases.mjs",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "db:migrate:sql": "node scripts/migrate-sql.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.5.7",
