@@ -208,6 +208,7 @@
     "releasesEmpty": "Nenhuma versão publicada ainda.",
     "repoLink": "Código",
     "liveLink": "No ar",
+    "releaseIndexLabel": "Índice de versões"
     "galleryHeading": "Galeria",
     "galleryShow": "Mostrar galeria",
     "galleryHide": "Ocultar galeria",
@@ -224,6 +225,15 @@
       "deprecated": "Descontinuado",
       "security": "Segurança"
     }
+  },
+  "ReleaseBump": {
+    "major": "Major",
+    "minor": "Minor",
+    "patch": "Patch",
+    "initial": "Initial",
+    "patchesToggle": "{count, plural, one {# patch} other {# patches}}",
+    "patchesExpand": "Mostrar patches",
+    "patchesCollapse": "Ocultar patches"
   },
   "Localized": {
     "notTranslated": "Não traduzido"
