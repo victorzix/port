@@ -11,6 +11,7 @@ import {
 } from "drizzle-orm/pg-core";
 
 import type { Localized } from "@/lib/localized";
+import type { ProjectImage } from "@/lib/project-media";
 import type { ChangeType, ProjectStatus } from "@/lib/project-enums";
 
 export const projects = pgTable(
@@ -29,6 +30,10 @@ export const projects = pgTable(
     year: integer("year").notNull(),
     sortOrder: integer("sort_order").notNull().default(0),
     imageUrl: text("image_url"),
+    /** Main showcase image, rendered in a device mockup on the detail page. */
+    bannerImage: jsonb("banner_image").$type<ProjectImage>(),
+    /** Ordered gallery, rendered as a marquee. Replaced wholesale on upsert. */
+    gallery: jsonb("gallery").$type<ProjectImage[]>().notNull().default([]),
     repoUrl: text("repo_url"),
     liveUrl: text("live_url"),
     createdAt: timestamp("created_at", { withTimezone: true })
@@ -82,6 +87,8 @@ export const releaseChanges = pgTable(
       .references(() => releases.id, { onDelete: "cascade" }),
     type: text("type").$type<ChangeType>().notNull(),
     text: jsonb("text").$type<Localized>().notNull(),
+    /** Optional screenshot for this specific change/feature. */
+    image: jsonb("image").$type<ProjectImage>(),
     /** Order within the release, assigned from payload array order. */
     position: integer("position").notNull(),
   },

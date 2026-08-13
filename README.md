@@ -1,5 +1,12 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Publicando projetos neste portfólio
+
+Qualquer projeto seu pode publicar o próprio registro e histórico de versões
+(incluindo imagens/prints em molduras de dispositivo) via a API idempotente de
+upload. Passo a passo completo, formato dos JSON e automação em
+**[docs/publishing-to-the-portfolio.md](docs/publishing-to-the-portfolio.md)**.
+
 ## Getting Started
 
 First, run the development server:

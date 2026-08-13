@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
 import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
+import { ProjectBanner } from "@/components/projects/project-banner";
+import { ProjectGallery } from "@/components/projects/project-gallery";
 import { ProjectLinks } from "@/components/projects/project-links";
 import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
 import { ReleaseTimeline } from "@/components/releases/release-timeline";
@@ -28,13 +30,15 @@ export async function generateMetadata({
 
   if (!project) return {};
 
+  const ogImage = project.bannerImage?.url ?? project.imageUrl;
+
   return {
     title: project.name,
     description: project.description.text,
     openGraph: {
       title: project.name,
       description: project.description.text,
-      ...(project.imageUrl ? { images: [{ url: project.imageUrl }] } : {}),
+      ...(ogImage ? { images: [{ url: ogImage }] } : {}),
     },
   };
 }
@@ -83,6 +87,8 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <ProjectLinks repoUrl={project.repoUrl} liveUrl={project.liveUrl} />
         </div>
 
+        {project.bannerImage && <ProjectBanner image={project.bannerImage} />}
+
         {project.summary && (
           <div className="mt-8 max-w-[68ch] sm:mt-11">
             <MarkdownContent content={project.summary.text} />
@@ -90,6 +96,20 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
               <LocalizedFallbackTag sourceLocale={project.summary.sourceLocale} />
             )}
           </div>
+        )}
+
+        {project.gallery.length > 0 && (
+          <ProjectGallery
+            images={project.gallery}
+            labels={{
+              heading: t("galleryHeading"),
+              show: t("galleryShow"),
+              hide: t("galleryHide"),
+              prev: t("galleryPrev"),
+              next: t("galleryNext"),
+              close: t("galleryClose"),
+            }}
+          />
         )}
 
         <section className="mt-11 sm:mt-16">

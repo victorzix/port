@@ -1,5 +1,6 @@
 import type { ChangeType, ProjectStatus } from "@/lib/project-enums";
 import type { Resolved } from "@/lib/localized";
+import type { ResolvedImage } from "@/lib/project-media";
 
 export interface ProjectListItem {
   slug: string;
@@ -16,6 +17,7 @@ export interface ReleaseChangeView {
   id: string;
   type: ChangeType;
   text: Resolved;
+  image: ResolvedImage | null;
 }
 
 export interface ReleaseView {
@@ -36,6 +38,8 @@ export interface ProjectDetailView {
   status: ProjectStatus;
   year: number;
   imageUrl: string | null;
+  bannerImage: ResolvedImage | null;
+  gallery: ResolvedImage[];
   repoUrl: string | null;
   liveUrl: string | null;
   releases: ReleaseView[];

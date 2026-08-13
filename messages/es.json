@@ -207,7 +207,13 @@
     "releasesHeading": "Versiones",
     "releasesEmpty": "Ninguna versión publicada todavía.",
     "repoLink": "Código",
-    "liveLink": "En vivo"
+    "liveLink": "En vivo",
+    "galleryHeading": "Galería",
+    "galleryShow": "Mostrar galería",
+    "galleryHide": "Ocultar galería",
+    "galleryPrev": "Imagen anterior",
+    "galleryNext": "Imagen siguiente",
+    "galleryClose": "Cerrar"
   },
   "ReleaseChange": {
     "type": {
