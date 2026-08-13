@@ -5,6 +5,7 @@ import { getTranslations } from "next-intl/server";
 import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
 import { ProjectLinks } from "@/components/projects/project-links";
 import { ProjectStatusBadge } from "@/components/projects/project-status-badge";
+import { ReleaseIndex } from "@/components/releases/release-index";
 import { ReleaseTimeline } from "@/components/releases/release-timeline";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header/site-header";
@@ -99,6 +100,7 @@ export default async function ProjectDetailPage({ params }: ProjectDetailPagePro
           <span className="font-mono text-[9.5px] tracking-[0.14em] text-muted-foreground uppercase">
             {t("releasesHeading")}
           </span>
+          <ReleaseIndex groups={releaseGroups} />
           <ReleaseTimeline groups={releaseGroups} />
         </section>
 
