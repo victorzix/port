@@ -48,3 +48,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# generated migration paste (scripts/migrate-sql.mjs)
+drizzle-migrate.sql
+migrate-prod*.sql
+migrate-prod*.txt

@@ -46,6 +46,12 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/content ./content
 COPY --from=builder --chown=nextjs:nodejs /app/scripts ./scripts
 
+# Migrations, for the pre-deployment hook to apply. Read by
+# scripts/migrate.mjs via drizzle-orm's runtime migrator — drizzle-kit is a
+# devDependency and is deliberately absent here. Nothing runs these at build
+# or at container boot; see CLAUDE.md.
+COPY --from=builder --chown=nextjs:nodejs /app/src/db/migrations ./src/db/migrations
+
 USER nextjs
 
 EXPOSE 3000
