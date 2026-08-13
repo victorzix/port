@@ -19,6 +19,7 @@ a timeline escaneável, com uma linha por release que traz feature (major/minor)
 - Derivação pura do tier (major/minor/patch/initial) a partir da numeração.
 - Agrupamento de patches sob o minor pai (colapsável, fechado por padrão).
 - Tratamento visual: escala tipográfica do número + selo mono, ambos na cor do tier.
+- Índice de versões (TOC) inline no topo da seção, clicável, âncora suave.
 - i18n (`en`/`pt`/`es`) dos rótulos e do toggle.
 - Testes unitários dos helpers puros.
 
@@ -128,9 +129,28 @@ Renderizado ao lado do número da versão no header do `ReleaseItem`.
   `"use client"`): o colapsável "N patches", **fechado por padrão**. Ao expandir,
   lista os patches de forma compacta (`v{version}` · data · mudanças). Botão com
   `aria-expanded` e rótulo acessível.
-- `ReleaseTimeline` passa a montar `groupReleases(releases)` e, para cada grupo,
-  renderiza o `ReleaseItem` do anchor seguido do `ReleasePatchGroup` (quando houver
-  patches), visualmente aninhado (indentado, sem borda de topo própria).
+- A página de detalhe monta `groupReleases(project.releases)` **uma vez** e passa os
+  `groups` tanto pro `ReleaseIndex` quanto pro `ReleaseTimeline` (fonte única, sem
+  recomputar).
+- `ReleaseTimeline` passa a receber `groups` e, para cada grupo, renderiza o
+  `ReleaseItem` do anchor seguido do `ReleasePatchGroup` (quando houver patches),
+  visualmente aninhado (indentado, sem borda de topo própria). O estado vazio passa
+  a checar `groups.length === 0`.
+
+### Índice de versões (TOC)
+
+Novo `src/components/releases/release-index.tsx` (server component). Recebe os
+`groups` e renderiza uma lista com wrap de links clicáveis — **um por anchor**
+(major/minor/initial; patches não entram, coerente com o colapso). Cada link aponta
+pra `#${versionAnchor(version)}` (âncoras já existentes; scroll suave já ligado
+globalmente; `scroll-mt-28` já nos itens). Estilo mono pequeno; cada entrada tinge
+na cor do seu tier, amarrando o índice ao estilo da timeline.
+
+- Fica na seção "Versões", **logo abaixo do heading e antes da timeline**.
+- Renderiza só quando há **2+ anchors** (`groups.length >= 2`) — com um só, não há o
+  que indexar.
+- Envolto em `<nav aria-label={t("releaseIndexLabel")}>` (landmark acessível); sem
+  sub-heading visível, pra não duplicar o "Versões".
 
 ### Responsivo / motion
 
@@ -146,6 +166,11 @@ Novo namespace `ReleaseBump` em `messages/{en,pt,es}.json`:
 - `patchesToggle` — toggle do grupo, com plural ICU:
   `"{count, plural, one {# patch} other {# patches}}"`.
 - `patchesExpand` / `patchesCollapse` — aria-labels do botão.
+
+No namespace `ProjectDetail` existente:
+
+- `releaseIndexLabel` — aria-label do `<nav>` do índice (ex.: en `Version index`,
+  pt `Índice de versões`, es `Índice de versiones`).
 
 **Decisão de rótulos:** manter `MAJOR`/`MINOR`/`PATCH`/`INITIAL` em inglês nos três
 locales (jargão semver reconhecido universalmente), porém **roteados pelo i18n** —
@@ -175,11 +200,15 @@ cumpre a regra de i18n e deixa trivial trocar por traduções depois se desejado
 - `src/lib/release-grouping.ts` (+ teste)
 - `src/components/releases/release-tier-tag.tsx`
 - `src/components/releases/release-patch-group.tsx`
+- `src/components/releases/release-index.tsx`
 
 **Editados:**
-- `src/components/releases/release-timeline.tsx` (usa `groupReleases`)
+- `src/app/[locale]/projects/[slug]/page.tsx` (monta `groups` uma vez; renderiza o
+  `ReleaseIndex` antes da timeline)
+- `src/components/releases/release-timeline.tsx` (recebe `groups`)
 - `src/components/releases/release-item.tsx` (prop `tier` + escala + selo)
-- `messages/en.json`, `messages/pt.json`, `messages/es.json` (namespace `ReleaseBump`)
+- `messages/en.json`, `messages/pt.json`, `messages/es.json` (namespace `ReleaseBump`
+  + chave `ProjectDetail.releaseIndexLabel`)
 
 **Não tocados:** banco, API, `schema.ts`, migrações, tipos de change, view-models,
 services.
@@ -190,3 +219,4 @@ services.
 - Combinar selo + escala tipográfica.
 - Colapsar **apenas patches** sob o minor; major e minor sempre visíveis.
 - Patches colapsados por padrão.
+- Índice de versões inline no topo da seção (só anchors major/minor), scroll suave.
