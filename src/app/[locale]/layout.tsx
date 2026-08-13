@@ -2,22 +2,34 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "../globals.css";
 import { Providers } from "../providers";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/locales";
 
-const spaceGrotesk = Space_Grotesk({
+// Self-hosted (latin subset, downloaded from Google Fonts) so the production
+// build never reaches the network — the Coolify build stage has none, and
+// next/font/google fetches at build time. Keep the weights in sync with the
+// tracking values used across the components.
+const spaceGrotesk = localFont({
   variable: "--font-space-grotesk",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  src: [
+    { path: "../fonts/space-grotesk-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/space-grotesk-500.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/space-grotesk-600.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/space-grotesk-700.woff2", weight: "700", style: "normal" },
+  ],
 });
 
-const jetBrainsMono = JetBrains_Mono({
+const jetBrainsMono = localFont({
   variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500"],
+  display: "swap",
+  src: [
+    { path: "../fonts/jetbrains-mono-400.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/jetbrains-mono-500.woff2", weight: "500", style: "normal" },
+  ],
 });
 
 export function generateStaticParams() {
