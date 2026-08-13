@@ -1,32 +1,34 @@
 #!/usr/bin/env node
 /**
- * Applies pending migrations using Drizzle's own runtime migrator.
+ * Applies pending migrations to DATABASE_URL.
  *
- * Deliberately does NOT use drizzle-kit: that is a devDependency and is absent
- * from the production image. `drizzle-orm/postgres-js/migrator` is part of the
- * runtime dependency the app already ships, so this runs anywhere the app runs,
- * with the same journal semantics drizzle-kit uses.
+ * Runs anywhere the app runs, including inside the production image, because it
+ * needs only `postgres` — a zero-dependency client — and not `drizzle-orm`.
+ * Next bundles drizzle-orm into the server chunks rather than installing it in
+ * the standalone output, so importing it at runtime fails there; the Dockerfile
+ * copies just `node_modules/postgres` (365 KB) instead of the 16 MB ORM.
  *
- * Intended as a deploy hook — a pre-deployment command, so the schema is in
- * place before new code serves traffic. Two things it is deliberately NOT:
+ * The SQL comes from scripts/lib/migration-sql.mjs, the same builder that backs
+ * `npm run db:migrate:sql`. Each migration runs only if its hash is absent from
+ * Drizzle's journal, so this is safe to run on every deploy.
+ *
+ * Intended as Coolify's post-deployment command, chained ahead of the publish
+ * step. Two things it is deliberately NOT:
  *
  *   - a build step: the build stage has no network access to Postgres.
- *   - the container's CMD or entrypoint: that would re-run on every restart,
- *     and a failing migration would keep the container from starting at all.
+ *   - the container's CMD or entrypoint: it would re-run on every restart, and
+ *     a failed migration would stop the container from starting at all.
  *
  * Usage:
  *   node scripts/migrate.mjs
  *
- * Requires DATABASE_URL in the environment. Exits non-zero on failure so the
- * deploy stops rather than shipping code against a schema that never landed.
+ * Exits non-zero on failure, so a deploy hook stops rather than shipping code
+ * against a schema that never landed.
  */
 
-import { existsSync } from "node:fs";
-import path from "node:path";
-
-import { drizzle } from "drizzle-orm/postgres-js";
-import { migrate } from "drizzle-orm/postgres-js/migrator";
 import postgres from "postgres";
+
+import { buildMigrationSql } from "./lib/migration-sql.mjs";
 
 const url = process.env.DATABASE_URL;
 if (!url) {
@@ -34,22 +36,35 @@ if (!url) {
   process.exit(1);
 }
 
-const migrationsFolder = path.join(process.cwd(), "src", "db", "migrations");
-if (!existsSync(migrationsFolder)) {
-  console.error(`No migrations folder at ${migrationsFolder}.`);
-  console.error("In the production image this is copied by the Dockerfile — check that COPY still exists.");
+let sql;
+let tags;
+try {
+  ({ sql, tags } = await buildMigrationSql(process.cwd()));
+} catch (error) {
+  console.error(`Could not read migrations: ${error instanceof Error ? error.message : error}`);
+  console.error("In the production image these are copied by the Dockerfile — check that COPY still exists.");
   process.exit(1);
 }
 
-// A single connection, and no pooling: this process does one job and exits.
-const client = postgres(url, { max: 1 });
+console.log(`${tags.length} migration(s) known: ${tags.join(", ")}`);
+
+// One connection, no pooling: this process does one job and exits. Drizzle's
+// NOTICEs are how each migration reports applied-vs-skipped, so surface them.
+const client = postgres(url, {
+  max: 1,
+  onnotice: (notice) => {
+    if (notice.message?.startsWith("applied ") || notice.message?.startsWith("skipped ")) {
+      console.log(`  ${notice.message}`);
+    }
+  },
+});
 
 try {
-  console.log("Applying pending migrations…");
-  await migrate(drizzle(client), { migrationsFolder });
-  console.log("Migrations up to date.");
+  await client.unsafe(sql).simple();
+  console.log("Schema up to date.");
 } catch (error) {
-  console.error("Migration failed:", error instanceof Error ? error.message : error);
+  console.error(`Migration failed: ${error instanceof Error ? error.message : error}`);
+  console.error("Nothing was applied — the script runs as a single transaction.");
   process.exitCode = 1;
 } finally {
   await client.end();
