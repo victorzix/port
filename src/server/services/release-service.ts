@@ -45,6 +45,8 @@ export async function upsertRelease(
           year: input.project.year,
           sortOrder: input.project.sortOrder,
           imageUrl: input.project.imageUrl ?? null,
+          bannerImage: input.project.bannerImage ?? null,
+          gallery: input.project.gallery,
           repoUrl: input.project.repoUrl ?? null,
           liveUrl: input.project.liveUrl ?? null,
         })
@@ -92,6 +94,7 @@ export async function upsertRelease(
           releaseId,
           type: change.type,
           text: change.text,
+          image: change.image ?? null,
           position,
         })),
       );

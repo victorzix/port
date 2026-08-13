@@ -207,7 +207,13 @@
     "releasesHeading": "Releases",
     "releasesEmpty": "No releases published yet.",
     "repoLink": "Source",
-    "liveLink": "Live"
+    "liveLink": "Live",
+    "galleryHeading": "Gallery",
+    "galleryShow": "Show gallery",
+    "galleryHide": "Hide gallery",
+    "galleryPrev": "Previous image",
+    "galleryNext": "Next image",
+    "galleryClose": "Close"
   },
   "ReleaseChange": {
     "type": {

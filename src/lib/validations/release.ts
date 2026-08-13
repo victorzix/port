@@ -3,7 +3,7 @@ import { z } from "zod";
 import { localizedSchema } from "@/lib/localized";
 import { CHANGE_TYPES } from "@/lib/project-enums";
 import { isValidVersion } from "@/lib/version-key";
-import { upsertProjectSchema } from "@/lib/validations/project";
+import { projectImageSchema, upsertProjectSchema } from "@/lib/validations/project";
 
 /** The version comes from the URL path, so it is validated separately. */
 export const versionParamSchema = z
@@ -13,6 +13,7 @@ export const versionParamSchema = z
 export const releaseChangeSchema = z.object({
   type: z.enum(CHANGE_TYPES),
   text: localizedSchema,
+  image: projectImageSchema.optional(),
 });
 
 export const upsertReleaseSchema = z.object({
