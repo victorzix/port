@@ -171,3 +171,25 @@
     background-clip: padding-box;
   }
 }
+
+/* Gallery marquee: a continuous horizontal scroll of two identical copies,
+   translated by half its width for a seamless loop. Paused on hover from the
+   component; disabled entirely (and made manually scrollable) when the viewer
+   prefers reduced motion. */
+@keyframes dc-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.dc-marquee {
+  animation: dc-marquee var(--dc-duration, 40s) linear infinite;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dc-marquee {
+    animation: none;
+  }
+  .dc-marquee-viewport {
+    overflow-x: auto;
+  }
+}

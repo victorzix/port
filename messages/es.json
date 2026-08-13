@@ -209,6 +209,12 @@
     "repoLink": "Código",
     "liveLink": "En vivo",
     "releaseIndexLabel": "Índice de versiones"
+    "galleryHeading": "Galería",
+    "galleryShow": "Mostrar galería",
+    "galleryHide": "Ocultar galería",
+    "galleryPrev": "Imagen anterior",
+    "galleryNext": "Imagen siguiente",
+    "galleryClose": "Cerrar"
   },
   "ReleaseChange": {
     "type": {

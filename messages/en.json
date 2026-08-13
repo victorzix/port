@@ -209,6 +209,12 @@
     "repoLink": "Source",
     "liveLink": "Live",
     "releaseIndexLabel": "Version index"
+    "galleryHeading": "Gallery",
+    "galleryShow": "Show gallery",
+    "galleryHide": "Hide gallery",
+    "galleryPrev": "Previous image",
+    "galleryNext": "Next image",
+    "galleryClose": "Close"
   },
   "ReleaseChange": {
     "type": {

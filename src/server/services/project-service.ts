@@ -4,6 +4,7 @@ import { db } from "@/db";
 import { projects } from "@/db/schema";
 import type { Locale } from "@/i18n/locales";
 import { resolve } from "@/lib/localized";
+import { resolveImage } from "@/lib/project-media";
 import { compareProjects } from "@/lib/project-ordering";
 import type { UpsertProjectInput } from "@/lib/validations/project";
 import type {
@@ -70,6 +71,8 @@ export async function getProjectBySlugForLocale(
     status: row.status,
     year: row.year,
     imageUrl: row.imageUrl,
+    bannerImage: row.bannerImage ? resolveImage(row.bannerImage, locale) : null,
+    gallery: row.gallery.map((image) => resolveImage(image, locale)),
     repoUrl: row.repoUrl,
     liveUrl: row.liveUrl,
     releases: row.releases.map((release) => ({
@@ -82,6 +85,7 @@ export async function getProjectBySlugForLocale(
         id: change.id,
         type: change.type,
         text: resolve(change.text, locale),
+        image: change.image ? resolveImage(change.image, locale) : null,
       })),
     })),
   };
@@ -105,6 +109,8 @@ export async function upsertProject(
     year: input.year,
     sortOrder: input.sortOrder,
     imageUrl: input.imageUrl ?? null,
+    bannerImage: input.bannerImage ?? null,
+    gallery: input.gallery,
     repoUrl: input.repoUrl ?? null,
     liveUrl: input.liveUrl ?? null,
   };
