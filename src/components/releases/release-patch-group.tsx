@@ -20,7 +20,7 @@ export function ReleasePatchGroup({ patches }: ReleasePatchGroupProps) {
   if (patches.length === 0) return null;
 
   return (
-    <div className="mt-4 border-t border-border/60 pt-4 pl-4">
+    <div className="mt-5 ml-2 border-l border-border pl-5">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
@@ -45,7 +45,7 @@ export function ReleasePatchGroup({ patches }: ReleasePatchGroupProps) {
             <li
               key={patch.id}
               id={versionAnchor(patch.version)}
-              className="scroll-mt-28"
+              className="relative scroll-mt-28 before:absolute before:left-[-23px] before:top-[7px] before:size-1.5 before:rounded-full before:bg-muted-foreground"
             >
               <div className="flex items-baseline justify-between gap-4">
                 <a

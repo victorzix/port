@@ -20,7 +20,7 @@ export function ReleaseTimeline({ groups }: ReleaseTimelineProps) {
   }
 
   return (
-    <div className="mt-6 flex flex-col sm:mt-8">
+    <div className="relative mt-6 flex flex-col pl-6 before:absolute before:top-4 before:bottom-4 before:left-2 before:w-px before:bg-border sm:mt-8">
       {groups.map((group, index) => (
         <div key={group.anchor.id}>
           <ReleaseItem

@@ -72,7 +72,7 @@ export function ReleaseItem({
       as="article"
       id={anchor}
       delay={(index % 4) * 70}
-      className="scroll-mt-28 border-t border-border py-6 sm:py-8"
+      className="relative scroll-mt-28 py-6 before:absolute before:left-[-20px] before:top-[26px] before:size-2 before:rounded-full before:bg-brand sm:py-8"
     >
       <ReleaseDisclosure
         defaultOpen={defaultOpen}
