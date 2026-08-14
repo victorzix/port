@@ -1,9 +1,10 @@
-import { useFormatter } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 
 import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
 import { MarkdownContent } from "@/components/markdown-content";
 import { Reveal } from "@/components/motion/reveal";
 import { ReleaseChangeList } from "@/components/releases/release-change-list";
+import { ReleaseDisclosure } from "@/components/releases/release-disclosure";
 import { ReleaseTierTag } from "@/components/releases/release-tier-tag";
 import {
   TIER_TEXT_COLOR,
@@ -18,21 +19,24 @@ interface ReleaseItemProps {
   release: ReleaseView;
   /** Bump tier of this release, driving its size, color, and tag. */
   tier: BumpTier;
+  /** Whether this release starts expanded (the newest one does). */
+  defaultOpen: boolean;
   /** Position in the timeline — drives the reveal stagger. */
   index?: number;
 }
 
-export function ReleaseItem({ release, tier, index = 0 }: ReleaseItemProps) {
+export function ReleaseItem({
+  release,
+  tier,
+  defaultOpen,
+  index = 0,
+}: ReleaseItemProps) {
   const format = useFormatter();
+  const t = useTranslations("ProjectDetail");
   const anchor = versionAnchor(release.version);
 
-  return (
-    <Reveal
-      as="article"
-      id={anchor}
-      delay={(index % 4) * 70}
-      className="scroll-mt-28 border-t border-border py-6 sm:py-8"
-    >
+  const header = (
+    <>
       <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
         <div className="flex items-center gap-2">
           <a
@@ -60,17 +64,32 @@ export function ReleaseItem({ release, tier, index = 0 }: ReleaseItemProps) {
           )}
         </h3>
       )}
+    </>
+  );
 
-      <ReleaseChangeList changes={release.changes} />
-
-      {release.notes && (
-        <div className="mt-4">
-          <MarkdownContent content={release.notes.text} />
-          {release.notes.isFallback && (
-            <LocalizedFallbackTag sourceLocale={release.notes.sourceLocale} />
-          )}
-        </div>
-      )}
+  return (
+    <Reveal
+      as="article"
+      id={anchor}
+      delay={(index % 4) * 70}
+      className="scroll-mt-28 border-t border-border py-6 sm:py-8"
+    >
+      <ReleaseDisclosure
+        defaultOpen={defaultOpen}
+        anchorId={anchor}
+        labels={{ expand: t("releaseExpand"), collapse: t("releaseCollapse") }}
+        header={header}
+      >
+        <ReleaseChangeList changes={release.changes} />
+        {release.notes && (
+          <div className="mt-4">
+            <MarkdownContent content={release.notes.text} />
+            {release.notes.isFallback && (
+              <LocalizedFallbackTag sourceLocale={release.notes.sourceLocale} />
+            )}
+          </div>
+        )}
+      </ReleaseDisclosure>
     </Reveal>
   );
 }

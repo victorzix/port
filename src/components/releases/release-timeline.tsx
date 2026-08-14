@@ -23,7 +23,12 @@ export function ReleaseTimeline({ groups }: ReleaseTimelineProps) {
     <div className="mt-6 flex flex-col sm:mt-8">
       {groups.map((group, index) => (
         <div key={group.anchor.id}>
-          <ReleaseItem release={group.anchor} tier={group.tier} index={index} />
+          <ReleaseItem
+            release={group.anchor}
+            tier={group.tier}
+            index={index}
+            defaultOpen={index === 0}
+          />
           <ReleasePatchGroup patches={group.patches} />
         </div>
       ))}
