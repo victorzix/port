@@ -1,4 +1,4 @@
-import { DeviceMockup } from "@/components/device-frames/device-mockup";
+import { ExpandableMockup } from "@/components/projects/expandable-mockup";
 import type { ResolvedImage } from "@/lib/project-media";
 import { cn } from "@/lib/utils";
 
@@ -13,7 +13,7 @@ export function ProjectBanner({ image }: ProjectBannerProps) {
   return (
     <div className="mt-8 sm:mt-11">
       <div className={cn("mx-auto w-full", isPhone ? "max-w-[260px]" : "max-w-[820px]")}>
-        <DeviceMockup image={image} />
+        <ExpandableMockup image={image} />
       </div>
     </div>
   );

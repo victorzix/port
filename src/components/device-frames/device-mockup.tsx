@@ -21,12 +21,7 @@ export function DeviceMockup({ image, className }: DeviceMockupProps) {
       );
     case "android":
       return (
-        <Android
-          src={image.url}
-          videoSrc={videoSrc}
-          imageAlt={alt}
-          className={cn("h-auto w-full", className)}
-        />
+        <Android src={image.url} videoSrc={videoSrc} imageAlt={alt} className={className} />
       );
     case "browser":
       return (

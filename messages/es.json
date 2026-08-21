@@ -216,7 +216,8 @@
     "galleryNext": "Imagen siguiente",
     "galleryClose": "Cerrar",
     "releaseExpand": "Mostrar cambios",
-    "releaseCollapse": "Ocultar cambios"
+    "releaseCollapse": "Ocultar cambios",
+    "mediaExpand": "Ampliar imagen"
   },
   "ReleaseChange": {
     "type": {

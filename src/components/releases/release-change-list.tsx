@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { DeviceMockup } from "@/components/device-frames/device-mockup";
+import { ExpandableMockup } from "@/components/projects/expandable-mockup";
 import { ChangeTypeGlyph } from "@/components/releases/change-type-glyph";
 import { LocalizedFallbackTag } from "@/components/localized-fallback-tag";
 import { cn } from "@/lib/utils";
@@ -39,9 +39,9 @@ export function ReleaseChangeList({ changes }: ReleaseChangeListProps) {
                 )}
               </span>
               {change.image && (
-                <DeviceMockup
+                <ExpandableMockup
                   image={change.image}
-                  className={cn("w-full", isPhone ? "max-w-[200px]" : "max-w-[440px]")}
+                  className={cn(isPhone ? "max-w-[220px]" : "max-w-[600px]")}
                 />
               )}
             </div>

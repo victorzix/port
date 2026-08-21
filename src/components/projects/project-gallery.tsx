@@ -1,9 +1,9 @@
 "use client";
 
-import { type CSSProperties, useCallback, useEffect, useState } from "react";
+import { type CSSProperties, useCallback, useState } from "react";
 
 import { DeviceMockup } from "@/components/device-frames/device-mockup";
-import { GalleryLightbox } from "@/components/projects/gallery-lightbox";
+import { MediaLightbox } from "@/components/projects/media-lightbox";
 import type { ResolvedImage } from "@/lib/project-media";
 import { cn } from "@/lib/utils";
 
@@ -43,25 +43,6 @@ export function ProjectGallery({ images, labels }: ProjectGalleryProps) {
       ),
     [images.length],
   );
-
-  useEffect(() => {
-    if (active === null) return;
-
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-      else if (event.key === "ArrowLeft") go(-1);
-      else if (event.key === "ArrowRight") go(1);
-    };
-
-    document.addEventListener("keydown", onKey);
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [active, close, go]);
 
   if (images.length === 0) return null;
 
@@ -121,9 +102,8 @@ export function ProjectGallery({ images, labels }: ProjectGalleryProps) {
       )}
 
       {active !== null && (
-        <GalleryLightbox
+        <MediaLightbox
           image={images[active]}
-          labels={labels}
           hasMany={images.length > 1}
           onClose={close}
           onPrev={() => go(-1)}
