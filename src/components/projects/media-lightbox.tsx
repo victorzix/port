@@ -53,7 +53,7 @@ export function MediaLightbox({
       role="dialog"
       aria-modal="true"
       onClick={onClose}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/85 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-5 bg-black/85 p-4 backdrop-blur-sm duration-200 animate-in fade-in-0 motion-reduce:animate-none sm:p-8"
     >
       <button
         type="button"
@@ -66,7 +66,7 @@ export function MediaLightbox({
 
       <figure
         onClick={(event) => event.stopPropagation()}
-        className="flex max-h-full max-w-[1100px] flex-col items-center gap-4"
+        className="flex max-h-full max-w-[1100px] flex-col items-center gap-4 duration-300 ease-out animate-in fade-in-0 zoom-in-95 motion-reduce:animate-none"
       >
         {image.videoUrl ? (
           <video
