@@ -1,13 +1,20 @@
 {
   "Metadata": {
     "title": "Portafolio",
-    "description": "Portafolio personal"
+    "description": "Portafolio personal",
+    "ogTitle": "Victor Raphael Neves Ramos | Desarrollador Fullstack",
+    "ogDescription": "TypeScript y .NET, sistemas en producción, automatización e IA."
   },
   "LocaleSwitcher": {
     "label": "Idioma"
   },
   "Nav": {
-    "items": ["Sobre mí", "Experiencia", "Proyectos", "Contacto"],
+    "items": [
+      "Sobre mí",
+      "Experiencia",
+      "Proyectos",
+      "Contacto"
+    ],
     "themeToDark": "Activar modo oscuro",
     "themeToLight": "Activar modo claro"
   },
@@ -69,7 +76,16 @@
         "length": "4 meses",
         "current": true,
         "desc": "Asignado a Ancar Ivanhoe. Dirijo decisiones de arquitectura y revisiones de código del equipo, con especificación y tests escritos antes del código (SDD y TDD) en flujo asistido por IA.",
-        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker", "Python", "LangChain"],
+        "stack": [
+          "TypeScript",
+          "NestJS",
+          "React",
+          "Next.js",
+          "PostgreSQL",
+          "Docker",
+          "Python",
+          "LangChain"
+        ],
         "deliverables": [
           {
             "name": "Gestión de beneficios (VR/VA)",
@@ -98,7 +114,15 @@
         "current": true,
         "tag": "en paralelo",
         "desc": "En equipo, vengo reemplazando herramientas sueltas y planillas por dos sistemas propios, con especificación escrita antes del código (SDD) y CI/CD publicando directo en Coolify en una VPS interna.",
-        "stack": [".NET", "ASP.NET Core", "Next.js", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
+        "stack": [
+          ".NET",
+          "ASP.NET Core",
+          "Next.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Docker",
+          "GitHub Actions"
+        ],
         "deliverables": [
           {
             "name": "LIMS de laboratorio",
@@ -121,7 +145,12 @@
         "length": "9 meses",
         "tag": "en paralelo",
         "desc": "Desarrollo y mantenimiento del sistema interno en React y Express, con estado global en Redux y modelado de datos en MongoDB.",
-        "stack": ["React", "Express", "Redux", "MongoDB"],
+        "stack": [
+          "React",
+          "Express",
+          "Redux",
+          "MongoDB"
+        ],
         "metric": "",
         "metricNote": ""
       },
@@ -132,7 +161,15 @@
         "length": "1 año 1 mes",
         "tag": "en paralelo",
         "desc": "Llevé solo el ciclo completo: la app oficial en Flutter y un sistema de convenios con pagos, boletos y suscripciones recurrentes. Backend en NestJS, front en React, PostgreSQL con caché en Redis. La telemedicina triplicó el alcance de pacientes, creció la adhesión a los convenios y el cobro, antes manual, pasó a salir automatizado.",
-        "stack": ["NestJS", "React", "Flutter", "PostgreSQL", "Redis", "Docker", "Jest"],
+        "stack": [
+          "NestJS",
+          "React",
+          "Flutter",
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "Jest"
+        ],
         "metric": "3×",
         "metricNote": "en el alcance de pacientes"
       },
@@ -143,7 +180,12 @@
         "length": "8 meses",
         "tag": "en paralelo",
         "desc": "Lideré el equipo de backend construyendo servicios en NestJS con WebSockets y Prisma, en entorno ágil.",
-        "stack": ["NestJS", "TypeScript", "WebSockets", "Prisma"],
+        "stack": [
+          "NestJS",
+          "TypeScript",
+          "WebSockets",
+          "Prisma"
+        ],
         "metric": "",
         "metricNote": ""
       }
@@ -175,9 +217,18 @@
       }
     ],
     "languages": [
-      { "name": "Portugués", "level": "Nativo" },
-      { "name": "Inglés", "level": "Fluido" },
-      { "name": "Francés", "level": "Básico" }
+      {
+        "name": "Portugués",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglés",
+        "level": "Fluido"
+      },
+      {
+        "name": "Francés",
+        "level": "Básico"
+      }
     ]
   },
   "Footer": {

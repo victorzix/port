@@ -1,13 +1,20 @@
 {
   "Metadata": {
     "title": "Portfolio",
-    "description": "Personal portfolio"
+    "description": "Personal portfolio",
+    "ogTitle": "Victor Raphael Neves Ramos | Fullstack Developer",
+    "ogDescription": "TypeScript and .NET, production systems, automation and AI."
   },
   "LocaleSwitcher": {
     "label": "Language"
   },
   "Nav": {
-    "items": ["About", "Experience", "Projects", "Contact"],
+    "items": [
+      "About",
+      "Experience",
+      "Projects",
+      "Contact"
+    ],
     "themeToDark": "Switch to dark mode",
     "themeToLight": "Switch to light mode"
   },
@@ -69,7 +76,16 @@
         "length": "4 months",
         "current": true,
         "desc": "Placed at Ancar Ivanhoe. I drive architecture decisions and code review for the team, with the spec and tests written before the code (SDD and TDD) in an AI-assisted workflow.",
-        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker", "Python", "LangChain"],
+        "stack": [
+          "TypeScript",
+          "NestJS",
+          "React",
+          "Next.js",
+          "PostgreSQL",
+          "Docker",
+          "Python",
+          "LangChain"
+        ],
         "deliverables": [
           {
             "name": "Benefits management (meal vouchers)",
@@ -98,7 +114,15 @@
         "current": true,
         "tag": "concurrent",
         "desc": "Working with a team to replace disconnected tools and spreadsheets with two in-house systems, writing the spec before the code (SDD) and shipping via CI/CD straight to Coolify on an internal VPS.",
-        "stack": [".NET", "ASP.NET Core", "Next.js", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
+        "stack": [
+          ".NET",
+          "ASP.NET Core",
+          "Next.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Docker",
+          "GitHub Actions"
+        ],
         "deliverables": [
           {
             "name": "Lab LIMS",
@@ -121,7 +145,12 @@
         "length": "9 months",
         "tag": "concurrent",
         "desc": "Built and maintained the internal system in React and Express, with global state in Redux and data modelling on MongoDB.",
-        "stack": ["React", "Express", "Redux", "MongoDB"],
+        "stack": [
+          "React",
+          "Express",
+          "Redux",
+          "MongoDB"
+        ],
         "metric": "",
         "metricNote": ""
       },
@@ -132,7 +161,15 @@
         "length": "1 yr 1 mo",
         "tag": "concurrent",
         "desc": "Ran the whole cycle solo: the official Flutter app and a health-plan system with payments, invoices and recurring subscriptions. NestJS backend, React front end, PostgreSQL with Redis caching. Telemedicine tripled the clinic's patient reach, health-plan sign-ups grew, and billing that used to be manual went out automatically.",
-        "stack": ["NestJS", "React", "Flutter", "PostgreSQL", "Redis", "Docker", "Jest"],
+        "stack": [
+          "NestJS",
+          "React",
+          "Flutter",
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "Jest"
+        ],
         "metric": "3×",
         "metricNote": "in patient reach"
       },
@@ -143,7 +180,12 @@
         "length": "8 months",
         "tag": "concurrent",
         "desc": "Led the backend team building services in NestJS with WebSockets and Prisma, in an agile setup.",
-        "stack": ["NestJS", "TypeScript", "WebSockets", "Prisma"],
+        "stack": [
+          "NestJS",
+          "TypeScript",
+          "WebSockets",
+          "Prisma"
+        ],
         "metric": "",
         "metricNote": ""
       }
@@ -175,9 +217,18 @@
       }
     ],
     "languages": [
-      { "name": "Portuguese", "level": "Native" },
-      { "name": "English", "level": "Fluent" },
-      { "name": "French", "level": "Basic" }
+      {
+        "name": "Portuguese",
+        "level": "Native"
+      },
+      {
+        "name": "English",
+        "level": "Fluent"
+      },
+      {
+        "name": "French",
+        "level": "Basic"
+      }
     ]
   },
   "Footer": {

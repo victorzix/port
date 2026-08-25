@@ -44,9 +44,36 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
+  const siteUrl = "https://portfolio.victoraphael.com";
+  const ogTitle = t("ogTitle");
+  const ogDescription = t("ogDescription");
+
   return {
+    metadataBase: new URL(siteUrl),
     title: t("title"),
     description: t("description"),
+    openGraph: {
+      type: "website",
+      url: "/",
+      siteName: t("title"),
+      title: ogTitle,
+      description: ogDescription,
+      locale,
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: ogTitle,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle,
+      description: ogDescription,
+      images: ["/og.png"],
+    },
   };
 }
 

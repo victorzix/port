@@ -1,13 +1,20 @@
 {
   "Metadata": {
     "title": "Portfólio",
-    "description": "Portfólio pessoal"
+    "description": "Portfólio pessoal",
+    "ogTitle": "Victor Raphael Neves Ramos | Desenvolvedor Fullstack",
+    "ogDescription": "TypeScript e .NET, sistemas em produção, automação e IA."
   },
   "LocaleSwitcher": {
     "label": "Idioma"
   },
   "Nav": {
-    "items": ["Sobre", "Experiência", "Projetos", "Contato"],
+    "items": [
+      "Sobre",
+      "Experiência",
+      "Projetos",
+      "Contato"
+    ],
     "themeToDark": "Ativar modo escuro",
     "themeToLight": "Ativar modo claro"
   },
@@ -69,7 +76,16 @@
         "length": "4 meses",
         "current": true,
         "desc": "Alocado na Ancar Ivanhoe. Direciono decisões de arquitetura e revisões de código do time, com especificação e testes escritos antes do código (SDD e TDD) em fluxo assistido por IA.",
-        "stack": ["TypeScript", "NestJS", "React", "Next.js", "PostgreSQL", "Docker", "Python", "LangChain"],
+        "stack": [
+          "TypeScript",
+          "NestJS",
+          "React",
+          "Next.js",
+          "PostgreSQL",
+          "Docker",
+          "Python",
+          "LangChain"
+        ],
         "deliverables": [
           {
             "name": "Gestão de benefícios (VR/VA)",
@@ -98,7 +114,15 @@
         "current": true,
         "tag": "em paralelo",
         "desc": "Em time, venho substituindo ferramentas soltas e planilhas por dois sistemas próprios, com especificação escrita antes do código (SDD) e CI/CD publicando direto no Coolify de uma VPS interna.",
-        "stack": [".NET", "ASP.NET Core", "Next.js", "TypeScript", "PostgreSQL", "Docker", "GitHub Actions"],
+        "stack": [
+          ".NET",
+          "ASP.NET Core",
+          "Next.js",
+          "TypeScript",
+          "PostgreSQL",
+          "Docker",
+          "GitHub Actions"
+        ],
         "deliverables": [
           {
             "name": "LIMS de laboratório",
@@ -121,7 +145,12 @@
         "length": "9 meses",
         "tag": "em paralelo",
         "desc": "Desenvolvimento e manutenção do sistema interno em React e Express, com estado global em Redux e modelagem de dados no MongoDB.",
-        "stack": ["React", "Express", "Redux", "MongoDB"],
+        "stack": [
+          "React",
+          "Express",
+          "Redux",
+          "MongoDB"
+        ],
         "metric": "",
         "metricNote": ""
       },
@@ -132,7 +161,15 @@
         "length": "1 ano 1 mês",
         "tag": "em paralelo",
         "desc": "Conduzi sozinho o ciclo completo: app oficial em Flutter e sistema de convênios com pagamentos, boletos e assinaturas recorrentes. Backend em NestJS, front em React, PostgreSQL com cache em Redis. A telemedicina triplicou o alcance de pacientes, a adesão aos convênios cresceu e a cobrança, antes manual, passou a sair automatizada.",
-        "stack": ["NestJS", "React", "Flutter", "PostgreSQL", "Redis", "Docker", "Jest"],
+        "stack": [
+          "NestJS",
+          "React",
+          "Flutter",
+          "PostgreSQL",
+          "Redis",
+          "Docker",
+          "Jest"
+        ],
         "metric": "3×",
         "metricNote": "no alcance de pacientes"
       },
@@ -143,7 +180,12 @@
         "length": "8 meses",
         "tag": "em paralelo",
         "desc": "Liderei o time de backend na construção de serviços em NestJS com WebSockets e Prisma, em ambiente ágil.",
-        "stack": ["NestJS", "TypeScript", "WebSockets", "Prisma"],
+        "stack": [
+          "NestJS",
+          "TypeScript",
+          "WebSockets",
+          "Prisma"
+        ],
         "metric": "",
         "metricNote": ""
       }
@@ -175,9 +217,18 @@
       }
     ],
     "languages": [
-      { "name": "Português", "level": "Nativo" },
-      { "name": "Inglês", "level": "Fluente" },
-      { "name": "Francês", "level": "Básico" }
+      {
+        "name": "Português",
+        "level": "Nativo"
+      },
+      {
+        "name": "Inglês",
+        "level": "Fluente"
+      },
+      {
+        "name": "Francês",
+        "level": "Básico"
+      }
     ]
   },
   "Footer": {
