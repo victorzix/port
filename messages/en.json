@@ -26,18 +26,18 @@
       "From the database to the deploy"
     ],
     "title": "Internal systems that erase manual work.",
-    "lead": "I work in TypeScript and .NET, building internal systems end to end — from the data model to the deploy. The five I have shipped so far remove more than 100 hours of manual work every month.",
+    "lead": "I work in TypeScript and .NET, building internal systems end to end — from the data model to the deploy. The six I have shipped so far remove more than 150 hours of manual work every month.",
     "ctaWork": "See my experience",
     "facts": [
       {
         "label": "Currently",
         "value": "Greenfive · Ancar Ivanhoe",
-        "note": "Three systems built from scratch and shipped to production: benefits, AI-assisted quotes and accounting provisions."
+        "note": "Four systems built from scratch and shipped to production: benefits, AI-assisted quotes, accounting provisions and managerial cost classification."
       },
       {
         "label": "Impact",
-        "value": "−106 h/month",
-        "note": "Hours of manual work removed every month across the three systems — figures validated by the business teams."
+        "value": "−154 h/month",
+        "note": "Hours of manual work removed every month across the four systems — figures validated by the business teams."
       },
       {
         "label": "Also current",
@@ -84,13 +84,20 @@
           "PostgreSQL",
           "Docker",
           "Python",
-          "LangChain"
+          "FastAPI",
+          "LangChain",
+          "Google Cloud Run"
         ],
         "deliverables": [
           {
             "name": "Benefits management (meal vouchers)",
             "metric": "−70 h/month",
             "note": "Requesting, approving and paying across the group's 94 companies, wired into finance."
+          },
+          {
+            "name": "Managerial cost classification",
+            "metric": "−48 h/month",
+            "note": "Purchase requisitions checked inside Oracle Fusion: supplier and cost classification validated against the company's historical base before submission."
           },
           {
             "name": "OCR and quoting agent",
@@ -103,7 +110,7 @@
             "note": "Legal-case provisions by category and co-participation, posted straight into JD Edwards."
           }
         ],
-        "metric": "−106 h",
+        "metric": "−154 h",
         "metricNote": "of manual work/month"
       },
       {

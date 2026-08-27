@@ -26,18 +26,18 @@
       "Do banco de dados ao deploy"
     ],
     "title": "Sistemas internos que apagam trabalho manual.",
-    "lead": "Trabalho com TypeScript e .NET construindo sistemas internos de ponta a ponta — do modelo de dados ao deploy. Os cinco que já subi em produção eliminam mais de 100 horas de trabalho manual por mês.",
+    "lead": "Trabalho com TypeScript e .NET construindo sistemas internos de ponta a ponta — do modelo de dados ao deploy. Os seis que já subi em produção eliminam mais de 150 horas de trabalho manual por mês.",
     "ctaWork": "Ver experiência",
     "facts": [
       {
         "label": "Atual",
         "value": "Greenfive · Ancar Ivanhoe",
-        "note": "Três sistemas entregues do zero em produção: benefícios, cotações com IA e provisão contábil."
+        "note": "Quatro sistemas entregues do zero em produção: benefícios, cotações com IA, provisão contábil e classificação gerencial."
       },
       {
         "label": "Impacto",
-        "value": "−106 h/mês",
-        "note": "Horas de trabalho manual eliminadas por mês somando os três sistemas — números validados pelas áreas de negócio."
+        "value": "−154 h/mês",
+        "note": "Horas de trabalho manual eliminadas por mês somando os quatro sistemas — números validados pelas áreas de negócio."
       },
       {
         "label": "Também atual",
@@ -84,13 +84,20 @@
           "PostgreSQL",
           "Docker",
           "Python",
-          "LangChain"
+          "FastAPI",
+          "LangChain",
+          "Google Cloud Run"
         ],
         "deliverables": [
           {
             "name": "Gestão de benefícios (VR/VA)",
             "metric": "−70 h/mês",
             "note": "Pedido, aprovação e pagamento nas 94 empresas do grupo, integrados ao financeiro."
+          },
+          {
+            "name": "Classificação gerencial",
+            "metric": "−48 h/mês",
+            "note": "Crítica da requisição de compra dentro do Oracle Fusion: valida fornecedor e classificação de custo contra a base histórica da empresa antes do envio."
           },
           {
             "name": "Agente de OCR e cotações",
@@ -103,7 +110,7 @@
             "note": "Cálculo de provisão judicial por categoria e coparticipação, com lançamento no JD Edwards."
           }
         ],
-        "metric": "−106 h",
+        "metric": "−154 h",
         "metricNote": "de trabalho manual/mês"
       },
       {

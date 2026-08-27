@@ -26,18 +26,18 @@
       "De la base de datos al deploy"
     ],
     "title": "Sistemas internos que borran el trabajo manual.",
-    "lead": "Trabajo con TypeScript y .NET construyendo sistemas internos de punta a punta — del modelo de datos al deploy. Los cinco que ya puse en producción eliminan más de 100 horas de trabajo manual al mes.",
+    "lead": "Trabajo con TypeScript y .NET construyendo sistemas internos de punta a punta — del modelo de datos al deploy. Los seis que ya puse en producción eliminan más de 150 horas de trabajo manual al mes.",
     "ctaWork": "Ver experiencia",
     "facts": [
       {
         "label": "Actualmente",
         "value": "Greenfive · Ancar Ivanhoe",
-        "note": "Tres sistemas construidos desde cero y en producción: beneficios, cotizaciones con IA y provisión contable."
+        "note": "Cuatro sistemas construidos desde cero y en producción: beneficios, cotizaciones con IA, provisión contable y clasificación gerencial."
       },
       {
         "label": "Impacto",
-        "value": "−106 h/mes",
-        "note": "Horas de trabajo manual eliminadas cada mes sumando los tres sistemas — cifras validadas por las áreas de negocio."
+        "value": "−154 h/mes",
+        "note": "Horas de trabajo manual eliminadas cada mes sumando los cuatro sistemas — cifras validadas por las áreas de negocio."
       },
       {
         "label": "También actual",
@@ -84,13 +84,20 @@
           "PostgreSQL",
           "Docker",
           "Python",
-          "LangChain"
+          "FastAPI",
+          "LangChain",
+          "Google Cloud Run"
         ],
         "deliverables": [
           {
             "name": "Gestión de beneficios (VR/VA)",
             "metric": "−70 h/mes",
             "note": "Pedido, aprobación y pago en las 94 empresas del grupo, integrados al área financiera."
+          },
+          {
+            "name": "Clasificación gerencial",
+            "metric": "−48 h/mes",
+            "note": "Crítica de la requisición de compra dentro de Oracle Fusion: valida proveedor y clasificación de costo contra la base histórica de la empresa antes del envío."
           },
           {
             "name": "Agente de OCR y cotizaciones",
@@ -103,7 +110,7 @@
             "note": "Provisión judicial por categoría y coparticipación, con asientos directo en JD Edwards."
           }
         ],
-        "metric": "−106 h",
+        "metric": "−154 h",
         "metricNote": "de trabajo manual/mes"
       },
       {
