@@ -6,8 +6,11 @@ import localFont from "next/font/local";
 import "../globals.css";
 import { Providers } from "../providers";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { JsonLd } from "@/components/json-ld";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/locales";
+import { localeAlternates, localePath, ogLocales } from "@/lib/locale-metadata";
+import { SITE_URL } from "@/lib/site";
 
 // Self-hosted (latin subset, downloaded from Google Fonts) so the production
 // build never reaches the network — the Coolify build stage has none, and
@@ -45,21 +48,23 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
 
-  const siteUrl = "https://portfolio.victoraphael.com";
   const ogTitle = t("ogTitle");
   const ogDescription = t("ogDescription");
 
   return {
-    metadataBase: new URL(siteUrl),
-    title: t("title"),
+    metadataBase: new URL(SITE_URL),
+    // Child pages set a bare title ("DocObra") and inherit the brand from the
+    // template, so every tab and search result carries it exactly once.
+    title: { default: t("title"), template: t("titleTemplate") },
     description: t("description"),
+    alternates: localeAlternates(locale as Locale),
     openGraph: {
       type: "website",
-      url: "/",
-      siteName: t("title"),
+      url: localePath(locale as Locale),
+      siteName: t("siteName"),
       title: ogTitle,
       description: ogDescription,
-      locale,
+      ...ogLocales(locale as Locale),
       images: [
         {
           url: "/og.png",
@@ -103,6 +108,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
+        <JsonLd locale={locale as Locale} />
       </body>
       <GoogleAnalytics />
     </html>

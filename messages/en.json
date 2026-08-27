@@ -1,7 +1,9 @@
 {
   "Metadata": {
-    "title": "Portfolio",
-    "description": "Personal portfolio",
+    "title": "Victor Raphael | Full Stack Developer",
+    "titleTemplate": "%s | Victor Raphael",
+    "siteName": "Victor Raphael",
+    "description": "Full stack developer working in TypeScript and .NET. I build internal systems end to end — six in production, removing 150+ hours of manual work every month.",
     "ogTitle": "Victor Raphael Neves Ramos | Fullstack Developer",
     "ogDescription": "TypeScript and .NET, production systems, automation and AI."
   },
@@ -244,6 +246,8 @@
   "ProjectsPage": {
     "num": "03",
     "label": "Projects",
+    "metaTitle": "Projects | Victor Raphael",
+    "metaDescription": "Personal and open projects, each with a public release history — what I build and maintain outside client work.",
     "title": "Things I build and keep in the open.",
     "lead": "Personal and open work, each with its own release history. Client and employer systems live in Experience.",
     "empty": {

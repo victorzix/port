@@ -1,7 +1,9 @@
 {
   "Metadata": {
-    "title": "Portafolio",
-    "description": "Portafolio personal",
+    "title": "Victor Raphael | Desarrollador Fullstack",
+    "titleTemplate": "%s | Victor Raphael",
+    "siteName": "Victor Raphael",
+    "description": "Desarrollador fullstack en TypeScript y .NET. Construyo sistemas internos de punta a punta — seis en producción, eliminando 150+ horas de trabajo manual al mes.",
     "ogTitle": "Victor Raphael Neves Ramos | Desarrollador Fullstack",
     "ogDescription": "TypeScript y .NET, sistemas en producción, automatización e IA."
   },
@@ -244,6 +246,8 @@
   "ProjectsPage": {
     "num": "03",
     "label": "Proyectos",
+    "metaTitle": "Proyectos | Victor Raphael",
+    "metaDescription": "Proyectos personales y abiertos, cada uno con historial de versiones público — lo que construyo y mantengo fuera del trabajo.",
     "title": "Cosas que construyo y mantengo en abierto.",
     "lead": "Trabajo personal y abierto, cada uno con su historial de versiones. Los sistemas de clientes y empresas están en Experiencia.",
     "empty": {

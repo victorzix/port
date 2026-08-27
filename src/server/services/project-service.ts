@@ -42,6 +42,39 @@ export async function getProjectsForLocale(
     }));
 }
 
+export interface ProjectSitemapEntry {
+  slug: string;
+  lastModified: Date;
+}
+
+/**
+ * Slugs for the sitemap, with the freshest date the page can claim: the newest
+ * release usually moves after the project row does, so whichever is later wins.
+ * Locale-independent — the sitemap emits every locale from the same slug.
+ */
+export async function getProjectSitemapEntries(): Promise<ProjectSitemapEntry[]> {
+  const rows = await db.query.projects.findMany({
+    columns: { slug: true, updatedAt: true },
+    with: {
+      releases: {
+        orderBy: (releases, { desc: descending }) => descending(releases.versionKey),
+        limit: 1,
+        columns: { releasedAt: true },
+      },
+    },
+  });
+
+  return rows.map((row) => {
+    const releasedAt = row.releases[0]?.releasedAt;
+
+    return {
+      slug: row.slug,
+      lastModified:
+        releasedAt && releasedAt > row.updatedAt ? releasedAt : row.updatedAt,
+    };
+  });
+}
+
 export async function getProjectBySlugForLocale(
   slug: string,
   locale: Locale,

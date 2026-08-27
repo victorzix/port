@@ -15,6 +15,7 @@ import { MarkdownContent } from "@/components/markdown-content";
 import { StackList } from "@/components/stack-list";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/locales";
+import { localeAlternates } from "@/lib/locale-metadata";
 import { groupReleases } from "@/lib/release-grouping";
 import { getProjectBySlugForLocale } from "@/server/services/project-service";
 
@@ -33,13 +34,16 @@ export async function generateMetadata({
   if (!project) return {};
 
   const ogImage = project.bannerImage?.url ?? project.imageUrl;
+  const alternates = localeAlternates(locale as Locale, `/projects/${slug}`);
 
   return {
     title: project.name,
     description: project.description.text,
+    alternates,
     openGraph: {
       title: project.name,
       description: project.description.text,
+      url: alternates.canonical,
       ...(ogImage ? { images: [{ url: ogImage }] } : {}),
     },
   };

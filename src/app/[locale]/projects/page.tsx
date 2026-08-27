@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { ProjectLedger } from "@/components/projects/project-ledger";
@@ -5,12 +6,33 @@ import { ProjectsEmpty } from "@/components/projects/projects-empty";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header/site-header";
 import type { Locale } from "@/i18n/locales";
+import { localeAlternates } from "@/lib/locale-metadata";
 import { getProjectsForLocale } from "@/server/services/project-service";
-
-export const dynamic = "force-dynamic";
 
 interface ProjectsPageProps {
   params: Promise<{ locale: string }>;
+}
+
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: ProjectsPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "ProjectsPage" });
+
+  const title = t("metaTitle");
+  const description = t("metaDescription");
+  const alternates = localeAlternates(locale as Locale, "/projects");
+
+  return {
+    // Absolute: `metaTitle` already carries the brand, and the layout template
+    // would otherwise append it a second time.
+    title: { absolute: title },
+    description,
+    alternates,
+    openGraph: { title, description, url: alternates.canonical },
+  };
 }
 
 export default async function ProjectsPage({ params }: ProjectsPageProps) {
