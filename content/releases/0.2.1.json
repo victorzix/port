@@ -1,0 +1,83 @@
+{
+  "version": "0.2.1",
+  "releasedAt": "2026-08-27T12:00:00Z",
+  "title": {
+    "en": "Analytics and timeline polish",
+    "pt": "Analytics e polimento da timeline",
+    "es": "Analytics y pulido de la línea de tiempo"
+  },
+  "changes": [
+    {
+      "type": "added",
+      "text": {
+        "en": "Google Analytics 4, loaded only when a measurement id is configured",
+        "pt": "Google Analytics 4, carregado só quando um id de medição está configurado",
+        "es": "Google Analytics 4, cargado solo cuando hay un id de medición configurado"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "Release timeline grouped by bump tier, with patches nested under their minor",
+        "pt": "Timeline de versões agrupada por tipo de bump, com patches aninhados sob o minor",
+        "es": "Línea de tiempo agrupada por tipo de bump, con parches anidados bajo su minor"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "A clickable version index on the project page, and older releases collapsed by default",
+        "pt": "Índice de versões clicável na página do projeto, e versões antigas recolhidas por padrão",
+        "es": "Índice de versiones clicable en la página del proyecto, y versiones antiguas recogidas por defecto"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "Project media — banner, gallery and per-change images — expandable in a lightbox",
+        "pt": "Mídia por projeto — banner, galeria e imagens por mudança — expansíveis em lightbox",
+        "es": "Medios por proyecto — banner, galería e imágenes por cambio — expandibles en lightbox"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "Open Graph and Twitter cards, so shared links carry a preview",
+        "pt": "Open Graph e Twitter cards, para links compartilhados levarem preview",
+        "es": "Open Graph y Twitter cards, para que los enlaces compartidos lleven preview"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "Untranslated content marked with the locale it fell back to",
+        "pt": "Conteúdo sem tradução marcado com o idioma de origem do fallback",
+        "es": "Contenido sin traducción marcado con el idioma del que hizo fallback"
+      }
+    },
+    {
+      "type": "fixed",
+      "text": {
+        "en": "The Android device frame no longer clips the screenshot inside it",
+        "pt": "O frame de Android não corta mais o print dentro dele",
+        "es": "El frame de Android ya no recorta la captura dentro de él"
+      }
+    },
+    {
+      "type": "fixed",
+      "text": {
+        "en": "Opening the lightbox no longer shifts the page when it locks the scroll",
+        "pt": "Abrir o lightbox não desloca mais a página ao travar o scroll",
+        "es": "Abrir el lightbox ya no desplaza la página al bloquear el scroll"
+      }
+    },
+    {
+      "type": "fixed",
+      "text": {
+        "en": "The change-type label now stacks above its text on mobile",
+        "pt": "O rótulo do tipo de mudança agora fica acima do texto no mobile",
+        "es": "La etiqueta del tipo de cambio ahora queda sobre el texto en móvil"
+      }
+    }
+  ]
+}
