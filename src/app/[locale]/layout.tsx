@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import localFont from "next/font/local";
 import "../globals.css";
 import { Providers } from "../providers";
+import { GoogleAnalytics } from "@/components/google-analytics";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@/i18n/locales";
 
@@ -103,6 +104,7 @@ export default async function LocaleLayout({
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>
+      <GoogleAnalytics />
     </html>
   );
 }

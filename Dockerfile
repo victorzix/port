@@ -19,6 +19,12 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+# GA4 measurement id. NEXT_PUBLIC_* is inlined into the bundle at build time, so
+# it has to be present here, not only at runtime — in Coolify mark the variable
+# as a build variable. Absent, the tag simply does not render (see
+# src/components/google-analytics.tsx).
+ARG NEXT_PUBLIC_GA_ID
+ENV NEXT_PUBLIC_GA_ID=$NEXT_PUBLIC_GA_ID
 RUN npm run build
 
 # ---- Run ----
