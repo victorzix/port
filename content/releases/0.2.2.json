@@ -1,0 +1,51 @@
+{
+  "version": "0.2.2",
+  "releasedAt": "2026-08-27T18:00:00Z",
+  "title": {
+    "en": "Search visibility",
+    "pt": "Visibilidade em buscas",
+    "es": "Visibilidad en buscadores"
+  },
+  "changes": [
+    {
+      "type": "added",
+      "text": {
+        "en": "robots.txt and a sitemap covering every route in the three locales, cross-linked with hreflang",
+        "pt": "robots.txt e sitemap cobrindo todas as rotas nos três idiomas, cruzadas com hreflang",
+        "es": "robots.txt y sitemap con todas las rutas en los tres idiomas, cruzadas con hreflang"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "Canonical and hreflang links, so the three locales stop competing as duplicate content",
+        "pt": "Links canonical e hreflang, para os três idiomas pararem de competir como conteúdo duplicado",
+        "es": "Enlaces canonical y hreflang, para que los tres idiomas dejen de competir como contenido duplicado"
+      }
+    },
+    {
+      "type": "added",
+      "text": {
+        "en": "Person and WebSite structured data, so the site reads as a profile and not an anonymous page",
+        "pt": "Structured data de Person e WebSite, para o site ser lido como um perfil e não uma página anônima",
+        "es": "Structured data de Person y WebSite, para que el sitio se lea como un perfil y no una página anónima"
+      }
+    },
+    {
+      "type": "changed",
+      "text": {
+        "en": "Titles and descriptions written for search, with the brand appended once per page",
+        "pt": "Títulos e descrições escritos para busca, com a marca aparecendo uma vez por página",
+        "es": "Títulos y descripciones escritos para búsqueda, con la marca apareciendo una vez por página"
+      }
+    },
+    {
+      "type": "fixed",
+      "text": {
+        "en": "og:url and og:locale announced the default locale on every language",
+        "pt": "og:url e og:locale anunciavam o idioma padrão em todas as línguas",
+        "es": "og:url y og:locale anunciaban el idioma predeterminado en todos los idiomas"
+      }
+    }
+  ]
+}
